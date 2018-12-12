@@ -1,0 +1,194 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url('../../images/bg.png') no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.border {
+    border: red 1px solid;
+}
+.bordergreen {
+    border: green 1px solid;
+}
+
+.well {
+    background: url('../../images/login.png') no-repeat;
+    background-size: 100% auto;
+    /* width: 728px; */
+    /* height: 300px; */
+    margin-top: 80px;
+    /* padding: 100px; */
+    /* 最新的css */
+    border: none;
+    /* width: 464px; */
+    /* height: 300px; */
+    /* padding: 27px 100px; */
+    padding: 0 0 60px 0;
+}
+.boxInput{
+    width:420px;
+    height: 90px;
+    
+}
+.boxInput input{
+    font-size: 18px;
+    color: #fff;
+}
+/*web background*/
+.container {
+    display: table;
+    height: 100%;
+}
+#loginBtn{
+    margin: auto;
+    background: url('../../images/log_pre.png') no-repeat ;
+    /* background-size:213px 33px; */
+    /* width: 213px;
+    height: 33px; */
+    border: 0px;
+    /* margin-left: 50px; */
+    /* 最新的css */
+    width: 220px;
+    height: 70px;
+    background-size: 100% 60%;
+    display: block;
+}
+#loginBtn:hover{
+    background: url('../../images/log_hover.png') no-repeat;
+    /* background-size:213px 33px; */
+    /* width: 213px;
+    height: 33px; */
+    border: 0px;
+    /* margin-left: 50px; */
+    /* 最新的css */
+    background-size: 100% 60%;
+    outline: none;
+    display: block;
+}
+#loginBtn:focus {outline:none;} /*for IE*/
+#loginBtn::-moz-focus-inner {border-color: transparent;} /*for mozilla*/
+
+.check i{
+    background-color:url('../../images/check.png') no-repeat;
+    height:27px ;
+}
+
+.row {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align: center;
+    height: 614px;
+}
+
+.col-centered {
+    margin-top: 50px;
+    display: inline-block;
+    float: none;
+    text-align: left;
+    margin-right: -4px;
+}
+
+.logininput {
+    border: 0px;
+    margin-top: 2px;
+}
+
+.name {
+    background: url(../../images/uname.png) no-repeat left center;
+    /* 最新的css */
+    background-size: 100% auto;
+}
+
+.pwd {
+    background: url(../../images/pwd.png) no-repeat left center;
+     /* 最新的css */
+     background-size: 100% auto;
+}
+
+.form-control {
+    margin-top: 40px;
+    padding-right: 50px;
+    background-color: #2BAFE8;
+    color: white;
+
+}
+input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    white!important;
+    font-size: 20px;
+    text-align: left;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #909;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #909;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #909;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:    #909;
+}
+
+
+em {
+    position: absolute;
+    width: 41px;
+    height: 40px;
+    left: 232px;
+    margin-top: 20px;
+}
+
+.box{
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* margin-top: -50px; */
+    /* 最新的css */
+    /* margin: -76px 47px 50px -58px; */
+    width: 420px;
+    margin: auto;
+}
+.check{
+    position: absolute;
+    float: left;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.forgot{
+    float: right;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.check .checked{
+    background:url('../../images/check.png') no-repeat;
+    background-size:15px 15px  ;
+    height:27px ;
+    padding-left: 50px;
+
+}
+.check i{
+    background:url('../../images/uncheck.png') no-repeat;
+    background-size:15px 15px  ;
+    height:27px ;
+    padding-left: 50px;
+
+}

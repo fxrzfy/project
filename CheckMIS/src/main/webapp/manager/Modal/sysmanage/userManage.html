@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Expires" CONTENT="0">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../common/css/style.min.css"/>
+    <link rel="stylesheet" href="../../common/plugs/layer/skin/layer.css?rev=433a1dd8df8c4851be764e907f6d758a"/>
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../../common/plugs/ztree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet" href="../../css/ztreeicon.css">
+    <title>用户管理</title>
+</head>
+</html>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-6 col-sm-8 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">部门</h3>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-24">
+
+                        <!-- <button type="button" class="btn btn-primary" id="stop" modal="enter"><span class="glyphicon btn-primary"></span><span>&nbsp;停用&nbsp;</span></button>
+                        <button type="button" class="btn btn-primary" id="del" modal="enter"><span class="glyphicon btn-primary"></span><span>&nbsp;删除&nbsp;</span></button> -->
+                    </div>
+                </div>
+                <div style="height:600px;overflow:auto;" class="panel-body">
+                    <ul id="tree" class="ztree"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-18 col-sm-18 col-md-18 col-lg-18">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form id="searchForm" class="form-horizontal">
+                        <div class="form-group form-group-sm">
+                            <div class="input-tip">
+                                <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"></label>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <input type="hidden" name="qid"/>
+                                    <input class="form-control" name ="key" placeholder="输入关键字搜索"/>
+                                </div>
+                            </div>
+
+                            <div class="input-tip">
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <button type="button" class="btn btn-primary" id="btn-search" modal="enter"><span
+                                            class="glyphicon glyphicon-search"></span><span>&nbsp;查询&nbsp;</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+
+                    <div id="todo" class="tab-pane active">
+                        <div style="text-align:right;">
+                            <input type="button" id="addNew"  class="btn btn-primary "  value="新增用户"/>
+                        </div>
+                        <table id="table1" data-toggle="table" data-ajax="table_1" class="table">
+                            <thead>
+                            <tr>
+                                <th data-field="state" data-checkbox="true">选择</th>
+                                <th data-field="index" data-formatter="getIndex" >序号</th>
+                                <th data-field="personId" class="hide">用户id</th>
+                                <th data-field="workNumber">工号</th>
+                                <th data-field="userName">用户名</th>
+                                <th data-field="name">姓名</th>
+                                <th data-field="userPhone">手机号</th>
+                                <th data-field="xb" data-formatter="handle_xb">性别</th>
+                                <th data-field="unitName">企业</th>
+                                <th data-field="deptName">部门</th>
+                                <th data-field="zw" data-formatter="formatter_zw">职务</th>
+                                <th data-field="yxbz" data-formatter="formatter_Inuser">是否有效</th>
+                                <th data-field="operation" data-switchable="false" data-formatter="handle_1" data-events="tableEvent_1">操作</th>
+                            </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="contractModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="form-horizontal" data-noclear="true" id="addForm">
+                <fieldset id="schemeFieldset">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">新增用户</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id" />
+                        <div class="form-group form-group-sm">
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3"><span
+                                        class="text-danger"></span>用户名</label>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <input type="text" name="userName" class="form-control required" autocomplete="off"
+                                           placeholder="请输入用户名">
+                                </div>
+                            </div>
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3"><span
+                                        class="text-danger"></span>姓名</label>
+
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <input type="text" name="name" class="form-control required"  autocomplete="off"
+                                           placeholder="请输入姓名">
+                                </div>
+                            </div>
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3"><span
+                                        class="text-danger"></span>工号</label>
+
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <input type="text" name="workNumber" class="form-control required "  autocomplete="off"
+                                           placeholder="请输入工号">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">身份证号</label>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <input type="text" name="sfzh" class="form-control  "  autocomplete="off"
+                                           placeholder="请输入身份证号">
+                                </div>
+                            </div>
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">出生日期</label>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <input type="text" name="csrq" class="form-control  date"  autocomplete="off"
+                                           placeholder="请输入出生日期">
+                                </div>
+                            </div>
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">性别</label>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <select class="form-control" name="xb" >
+                                        <option value="0">男</option>
+                                        <option value="1">女</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">入职日期</label>
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <input type="text" name="rzrr" class="form-control  date"  autocomplete="off"
+                                           placeholder="请输入入职日期">
+                                </div>
+                            </div>
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">内置用户</label>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="nzyh" class="btntype " value="1"/>是
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="nzyh" class="btntype " value="0"/>否
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">部门</label>
+                                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                                    <input type="text" name="deptName"  class="form-control  required" id="deptSel" readonly="readonly"  autocomplete="off"
+                                           placeholder="选择部门">
+                                    <div id="treeview" style="display: none;"></div>
+                                    <input type="hidden" id="deptId" name="deptId" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">职务</label>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <select name="zw" class="form-control  rcDropdownInit" data-type="zw">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">手机</label>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <input type="text" name="userPhone" class="form-control "  autocomplete="off"
+                                           placeholder="请输入手机">
+                                </div>
+                            </div>
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">路电</label>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <input type="text" name="ld" class="form-control "  autocomplete="off"
+                                           placeholder="请输入路电">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm">
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">全日制学历</label>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <select name="qrzxl" class="form-control  rcDropdownInit" data-type="xl">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">最高学历</label>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <select name="zgxl" class="form-control  rcDropdownInit" data-type="xl">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">持有稽查证</label>
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="cyjcz" class="btntype  " value="1"/>是
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="cyjcz" class="btntype " value="0"/>否
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">邮箱</label>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <input type="text" name="email"  class="form-control " placeholder="请输入邮箱"  autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3"><span
+                                        class="text-danger"></span>家庭地址</label>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <input type="text"  name="jtdz"  class="form-control "  autocomplete="off" placeholder="请输入家庭地址" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <div class="input-tip">
+                                <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">备注</label>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <textarea name="memo"  class="form-control "  autocomplete="off" placeholder="请输入备注" ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="save">保存</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" modal="reset" class="btn btn-white hide" id="resetSchemeForm">重置
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="grantModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="form-horizontal" id="schemeForm">
+                <input type="hidden" name="id">
+                <fieldset id="schemeFieldsetGrant">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">授权</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-24">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-content">
+                                        <div class="tab-pane">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <button type="button" class="btn btn-primary btnright " id="saveu">保存</button>
+                                                            <h3 class="panel-title">用户信息</h3>
+                                                        </div>
+                                                        <div style="height:200px;overflow:auto;" class="panel-body">
+                                                            <div class="form-group form-group-sm">
+                                                                <div class="input-tip">
+                                                                    <label class="control-label col-xs-6 col-sm-6 col-md-6 col-lg-6">用户名</label>
+                                                                    <div class="col-xs-14 col-sm-14 col-md-14 col-lg-14">
+                                                                        <input type="text" name="userName" class="form-control"  autocomplete="off"
+                                                                               placeholder="请输入用户名">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group form-group-sm">
+                                                                <div class="input-tip">
+                                                                    <label class="control-label col-xs-6 col-sm-6 col-md-6 col-lg-6">密码</label>
+                                                                    <div class="col-xs-14 col-sm-14 col-md-14 col-lg-14">
+                                                                        <input type="text" name="password" class="form-control  "  autocomplete="off"
+                                                                               placeholder="请输入密码">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <button type="button" class="btn btn-primary btnright " id="saver">保存</button>
+                                                            <h3 class="panel-title">角色</h3>
+                                                        </div>
+                                                        <div style="height:500px;overflow:auto;" id="roleDiv" class="panel-body">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading">
+                                                            <h3 class="panel-title">菜单</h3>
+                                                        </div>
+                                                        <div style="height:500px;overflow:auto;" class="panel-body">
+                                                            <input type="hidden" name="roleId" id="selectedRoleId">
+                                                            <ul id="tree2" class="ztree"></ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="grantMenu">保存</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../../common/js/jquery-2.1.1.min.js?rev=6631a779321bc03f4a5281d3ff526254"></script>
+<script src="../../common/plugs/bootstrap-3.3.5/js/bootstrap.min.js?rev=4becdc9104623e891fbb9d38bba01be4"></script>
+<script src="../../common/plugs/layer/layer.js?rev=8962f047eeb03c06cf8200de1bf8ab99"></script>
+<script src="../../common/js/mock.js"></script>
+<script src="../../common/plugs/jquery-validation/dist/jquery.validate.min.js?rev=3b00d60f87e893caf2649eff0d48813a"></script>
+<script src="../../common/plugs/jquery-validation/dist/additional-methods.js"></script>
+<script src="../../common/plugs/jquery-validation/dist/localization/messages_zh.min.js?rev=6979ac84406e8c982e578736d368b3f8"></script>
+<script src="../../common/js/jquery.form.js"></script>
+<script src="../../common/js/jquery.values.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../common/plugs/ztree/js/jquery.ztree.core.js"></script>
+<script src="../../common/plugs/ztree/js/jquery.ztree.excheck.js"></script>
+<script src="../../common/js/bootstrap-treeview.min.js"></script>
+<script src="../../common/js/URL.js"></script>
+<script src="../../common/js/iframeCommon.js"></script>
+<script src="../../js/sysmanage/userManage.js"></script>'

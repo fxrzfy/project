@@ -1,0 +1,295 @@
+<link rel="stylesheet" href="../../../common/plugs/viewer/css/viewer.min.css">
+<div class="row">
+  <div class="col-md-24 col-xs-24 col-sm-24">
+		<div class="ibox float-e-margins" id="documentList_credit">
+			<form id="creditInfoForm" class="form-horizontal">
+				<fieldset class="disabledBox">
+					<div id="host"> </div>
+					<div id="wife"> </div>
+					<div id="partyBox"> </div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<!-- 工行征信结果模板 -->
+<div id="creditResultForm">
+	<div class="creditResultForm hide">
+		<input name="creditRelavantId" type="hidden"/>
+		<div class="form-group form-group-sm">
+			<div class="input-tip">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">风险预筛查结果：</label>
+				<div class="col-md-21">
+                    <textarea required="" aria-required="true" class="form-control level" rows="3"
+							  name="result"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">贷款逾期记录：</label>
+				<div class="col-md-21">
+                    <textarea required="" aria-required="true" class="form-control loanRecode" rows="3"
+							  name="loancrdt"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">信用卡逾期记录：</label>
+				<div class="col-md-21">
+                    <textarea required="" aria-required="true" class="form-control cardRecode" rows="3"
+							  name="cardcrdt"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">工行专项卡分期笔数：</label>
+				<div class="col-md-21">
+                    <textarea required="" aria-required="true" class="form-control count" rows="3"
+							  name="leftnum"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">未结清余额：</label>
+				<div class="col-md-21">
+                    <textarea required="" aria-required="true" class="form-control money" rows="3"
+							  name="leftamount"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="bankNoteAnalysis">
+			<!-- 贷款汇总
+            <hr/>
+            <div class="form-group form-group-sm">
+                <div class="input-tip">
+                    <label class="col-md-3 col-xs-3 col-sm-3 control-label">银行备注：</label>
+                    <div class="col-md-5 cl-sm-5 col-xs-5">
+                    <input  class="form-control"  name="" />
+                    </div>
+                </div>
+                <div class="input-tip">
+                    <label class="col-md-3 col-xs-3 col-sm-3 control-label">银行备注：</label>
+                    <div class="col-md-5 cl-sm-5 col-xs-5">
+                    <input  class="form-control"  name="" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <div class="input-tip">
+                    <label class="col-md-3 col-xs-3 col-sm-3 control-label">银行备注：</label>
+                    <div class="col-md-5 cl-sm-5 col-xs-5">
+                    <input  class="form-control"  name="" />
+                    </div>
+                </div>
+                <div class="input-tip">
+                    <label class="col-md-3 col-xs-3 col-sm-3 control-label">银行备注：</label>
+                    <div class="col-md-5 cl-sm-5 col-xs-5">
+                    <input  class="form-control"  name="" />
+                    </div>
+                </div>
+            </div> -->
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">银行备注：</label>
+				<div class="col-md-21">
+					<textarea class="form-control note" rows="3" name="creditRemark"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--温州银行征信模板  -->
+<div id="ch">
+	<form class="chForm hide">
+		<input name="creditRelavantId" type="hidden"/>
+		<div class="form-group form-group-sm ">
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">有无信贷：</label>
+				<label class="radio-inline"> <input type="radio"
+													value="1" name="haveCredit" class="required">有
+				</label> <label class="radio-inline"> <input type="radio"
+															 value="2" name="haveCredit" class="required">无
+			</label>
+			</div>
+			<div class="input-tip">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">婚姻状况：</label>
+				<label class="radio-inline"> <input type="radio"
+													value="1" name="maritalStatus" class="required">未婚
+				</label> <label class="radio-inline"> <input type="radio"
+															 value="2" name="maritalStatus" class="required">已婚
+			</label>
+				<label class="radio-inline"> <input type="radio"
+													value="3" name="maritalStatus" class="required">离婚
+				</label> <label class="radio-inline"> <input type="radio"
+															 value="4" name="maritalStatus" class="required">不明确
+			</label>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip dkinfo">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">贷款情况：</label>
+				<label class="radio-inline"> <input type="checkbox"
+													value="1" name="lm" class="required">有房贷
+				</label> <label class="radio-inline"> <input type="checkbox"
+															 value="2" name="lm" class="required">有经营性贷款
+			</label>
+				<label class="radio-inline"> <input type="checkbox"
+													value="3" name="lm" class="required">有信用卡
+				</label> <label class="radio-inline"> <input type="checkbox"
+															 value="4" name="lm" class="required">其他贷款
+			</label>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">贷款余额：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<input type="text" name="loanAmount" placeholder=""
+						   class="form-control" required="" aria-required="true">
+				</div>
+			</div>
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">为他人提供担保额：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<input type="text" name="guaranteeAmount" placeholder=""
+						   class="form-control" required="" aria-required="true">
+				</div>
+			</div>
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">当前逾期总额：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<input type="text" name="overdueAmount" placeholder=""
+						   class="form-control" required="" aria-required="true">
+				</div>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">信用卡授信总额：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<input type="text" name="cardCreditAmount" placeholder=""
+						   class="form-control" required="" aria-required="true">
+				</div>
+			</div>
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">信用卡最近6个月平均使用额度（透支余额）：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<input type="text" name="overdraft6Amount" placeholder=""
+						   class="form-control" required="" aria-required="true">
+				</div>
+			</div>
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">最近12个月内累计逾期次数：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<input type="text" name="overdue12Times" placeholder=""
+						   class="form-control number" required="" aria-required="true"
+						   onkeyup="this.value=this.value.replace(/\D/g,'')"
+						   onafterpaste="this.value=this.value.replace(/\D/g,'')">
+				</div>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">最近24个月内累计逾期次数：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<input type="text" name="overdue24Times" placeholder=""
+						   class="form-control number" required="" aria-required="true"
+						   onkeyup="this.value=this.value.replace(/\D/g,'')"
+						   onafterpaste="this.value=this.value.replace(/\D/g,'')">
+				</div>
+			</div>
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">最近24个月内最高逾期期数：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<input type="text" name="maxOverdueNum" placeholder=""
+						   class="form-control number" required="" aria-required="true"
+						   onkeyup="this.value=this.value.replace(/\D/g,'')"
+						   onafterpaste="this.value=this.value.replace(/\D/g,'')">
+				</div>
+			</div>
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">贷记卡账户状态：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<select name="cardAccountStatus" class="form-control required">
+						<option value="">--请选择--</option>
+						<option value="1">正常</option>
+						<option value="2">非正常</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">贷款账户状态：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<select name="loanAccountStatus" class="form-control required">
+						<option value="">--请选择--</option>
+						<option value="1">正常</option>
+						<option value="2">非正常</option>
+					</select>
+				</div>
+			</div>
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">最近1个月内贷款、信用卡审批查询次数：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<input type="text" name="approvalQueryTimes" placeholder=""
+						   class="form-control" required="" aria-required="true"
+						   onkeyup="this.value=this.value.replace(/\D/g,'')"
+						   onafterpaste="this.value=this.value.replace(/\D/g,'')">
+				</div>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">公积金：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<select name="accumulationFund" class="form-control required">
+						<option value="">--请选择--</option>
+						<option value="1">有</option>
+						<option value="2">无</option>
+					</select>
+				</div>
+			</div>
+			<div class="input-tip ">
+				<label class="col-md-3 col-xs-3 col-sm-3 control-label">社保：</label>
+				<div class="col-md-5 cl-sm-5 col-xs-5">
+					<select name="socialSecurity" class="form-control required">
+						<option value="">--请选择--</option>
+						<option value="1">有</option>
+						<option value="2">无</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip">
+				<label class="col-xs-3 col-sm-3 col-md-3 control-label">家庭地址：</label>
+
+				<div class="col-xs-13 col-sm-13 col-md-13">
+					<input type="text" name="homeAddressPname" class="form-control"
+						   required="required" aria-required="true"/>
+				</div>
+			</div>
+		</div>
+		<div class="form-group form-group-sm">
+			<div class="input-tip">
+				<label class="col-xs-3 col-sm-3 col-md-3 control-label">工作单位：</label>
+
+				<div class="col-xs-13 col-sm-13 col-md-13">
+					<input type="text" name="companyAddressPname" class="form-control"
+						   required="required" aria-required="true"/>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script src="../../../common/plugs/viewer/js/viewer.js"></script>
+<script type="text/javascript" src="../../../js/common/commonCreditInfo/credit.js"></script>

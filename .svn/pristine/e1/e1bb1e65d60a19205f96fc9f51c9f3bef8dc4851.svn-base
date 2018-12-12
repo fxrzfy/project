@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Expires" CONTENT="0">
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Pragma" CONTENT="no-cache">
+<link rel="stylesheet"
+	href="../../common/plugs/bootstrap-3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../../common/css/style.min.css" />
+<link rel="stylesheet"
+	href="../../common/plugs/layer/skin/layer.css?rev=433a1dd8df8c4851be764e907f6d758a" />
+<link rel="stylesheet"
+	href="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.css">
+<link rel="stylesheet"
+	href="../../common/plugs/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css">
+<title>寄送信息录入</title>
+</head>
+</html>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<div class="page-header">
+							<h3 class="text-center">寄送信息录入</h3>
+						</div>
+						<form id="searchForm" class="form-horizontal">
+							<div class="form-group form-group-sm">
+								<div class="input-tip">
+									<label
+										class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">快递公司：</label>
+									<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+										<select name="expressCompanyCode" class="form-control" id="expressCompanyCode" required="required" aria-required="true">
+											<option value="" selected>--请选择--</option>
+										</select>
+									</div>
+								</div>
+								<div class="input-tip">
+									<label
+										class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">快递单号：</label>
+									<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+										<input type="text" name="courierNumber" placeholder="请输入快递单号" class="form-control" required="required" aria-required="true">
+									</div>
+								</div>
+								<div class="input-tip">
+									<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">操作人：</label>
+									<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+										<input id="userId" type="hidden" name="userId"  class="form-control" >
+										<input id="userName" type="text" name="userName"  class="form-control" readonly="readonly" required="required" aria-required="true">
+									</div>
+								</div>
+
+							</div>
+							<div class="form-group form-group-sm">
+								<div class="input-tip">
+									<label
+										class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">收件人：</label>
+									<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+										<input type="text" name="recipientsName" placeholder="请输入收件人" class="form-control" required="required" aria-required="true">
+									</div>
+								</div>
+
+								<div class="input-tip">
+									<label
+										class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">手机号：</label>
+									<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+										<input id="phone" type="text" name="phone" placeholder="请输入手机号" class="form-control mobile" required="required" aria-required="true">
+									</div>
+								</div>
+
+							</div>
+							<div class="form-group form-group-sm">
+								<div class="input-tip">
+									<label
+										class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">收件地址：</label>
+									<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+										<select name="province" class="form-control required" id="province_1" required="required" aria-required="true">
+											<option value="">--请选择--</option>
+										</select>
+										<input type="hidden" name="provinceName" class="form-control" value="">
+									</div>
+								</div>
+
+								<div class="input-tip">
+									<label
+										class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">市：</label>
+									<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+										<select name="city" class="form-control required" id="city_1" required="required" aria-required="true">
+											<option value="">--请选择--</option>
+										</select>
+										<input type="hidden" name="cityName" class="form-control" value="">
+									</div>
+								</div>
+
+								<div class="input-tip finshedSend">
+									<label
+										class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">区/县：</label>
+									<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+										<select name="area" class="form-control required" id="area_1" required="required" aria-required="true">
+											<option value="">--请选择--</option>
+										</select>
+										<input type="hidden" name="areaName" class="form-control" value="">
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group form-group-sm finshedSend">
+								<div class="input-tip">
+									<label
+										class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">详细地址：</label>
+									<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+										<input type="text" name="address" placeholder="请输入详细地址" class="form-control" required="required" aria-required="true">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<table id="table_1" data-toggle="table" class="table">
+							<thead>
+								<tr>
+									<th data-formatter="handle_1" data-events="tableEvent_1"></th>
+									<th data-field="applyId" class="hide">申请id</th>
+									<th data-field="customerId" class="hide">客户id</th>
+									<th data-field="customerName">客户姓名</th>
+									<th data-field="idCard">身份证号</th>
+									<th data-field="licensePlate">上牌地</th>
+									<th data-field="loanAmount">贷款金额</th>
+				                    <th data-field="loanTerm" data-formatter="loanTerm">期限</th>
+				                    <th data-field="downPaymentAmount">首付款</th>
+				                    <th data-field="serveFeeAmount">金融服务费</th>
+				                    <th data-field="vin">车架号</th>
+				                    <th data-field="licenseNum">车牌号</th>
+				                    <th data-field="coBankId" class="hide">合作银行id</th>
+				                    <th data-field="coBankName">合作银行</th>
+				                    <th data-field="businessOrgId" class="hide">业务机构id</th>
+				                    <th data-field="businessOrgName">业务机构</th>
+				                    <th data-field="businessGroupId" class="hide">业务组id</th>
+				                    <th data-field="businessGroupName">业务组</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button id = "checkSure" class="btn btn-info">发件</button>
+						<button id = "checkCancel" data-dismiss="modal" class="btn btn-default">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
+</body>
+<script src="../../common/js/jquery-2.1.1.min.js?rev=6631a779321bc03f4a5281d3ff526254"></script>
+<script src="../../common/plugs/bootstrap-3.3.5/js/bootstrap.min.js?rev=4becdc9104623e891fbb9d38bba01be4"></script>
+<script src="../../common/plugs/layer/layer.js?rev=8962f047eeb03c06cf8200de1bf8ab99"></script>
+<script src="../../common/js/mock.js"></script>
+<script src="../../common/plugs/jquery-validation/dist/jquery.validate.min.js?rev=3b00d60f87e893caf2649eff0d48813a"></script>
+<script src="../../common/plugs/jquery-validation/dist/localization/messages_zh.min.js?rev=6979ac84406e8c982e578736d368b3f8"></script>
+<script src="../../common/js/jquery.values.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../common/plugs/jquery-validation/dist/additional-methods.js?rev=1448952564056"></script>
+<script type="text/javascript" charset="utf-8">
+  $("head").append([
+    '<script src="../../common/js/URL.js"><\/script>',
+    '<script src="../../common/js/iframeCommon.js"><\/script>',
+    '<script src="../../js/mortgageDataManage/dataEntry.js"><\/script>'
+  ].join(""));
+</script>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--数据库驱动-->
+    <context id="DB2Tables"    targetRuntime="MyBatis3">
+    	<property name="javaFileEncoding" value="UTF-8"/>
+         <commentGenerator type="org.mybatis.generator.internal.LCCommentGenerater">
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="false"/>
+            <property name="addRemarkComments" value="false"/>
+        </commentGenerator>
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@218.108.15.67:1521:orcl" userId="czyjapp" password="czyjapp">
+        	<property name="remarksReporting" value="true"></property>
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--生成Model类存放位置-->
+        <javaModelGenerator targetPackage="com.core.model.generate" targetProject="hzzapp">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="mergeable" value="false"></property>
+        </javaModelGenerator>
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="hzzapp">
+            <property name="enableSubPackages" value="true"/>
+            <property name="mergeable" value="false"></property>
+        </sqlMapGenerator>
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.core.mapper.generate" targetProject="hzzapp">
+            <property name="enableSubPackages" value="true"/>
+            <property name="mergeable" value="false"></property>
+        </javaClientGenerator>
+        <!--生成对应表及类名-->
+        <table schema="czyjapp" tableName="test_column" domainObjectName="TestColumn" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+    </context>
+</generatorConfiguration>

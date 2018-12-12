@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Expires" CONTENT="0">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../common/css/style.min.css"/>
+    <link rel="stylesheet" href="../../common/plugs/layer/skin/layer.css?rev=433a1dd8df8c4851be764e907f6d758a"/>
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../../common/plugs/ztree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-table/dist/extensions/editable/css/bootstrap-editable.css">
+    <link rel="stylesheet" href="../../common/css/animate.min.css">
+    <link rel="stylesheet" href="../../common/plugs/daterangepicker-master/daterangepicker.css">
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-select-1.10.0/dist/css/bootstrap-select.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <title>工作写实</title>
+</head>
+</html>
+<body class="gray-bg">
+<div id="edit" class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div>
+                    <ul class="nav nav-tabs" id="lx_tab">
+                        <li class="active"><a href="#tab1" id="hy" data-toggle="tab">货运</a></li>
+                        <li><a href="#tab2" id="ky" data-toggle="tab">客运</a></li>
+                        <li><a href="#tab3" id="lc" data-toggle="tab">列车</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <p></p>
+                        <div id="tab1" class="tab-pane active">
+                            <form id="hy_form" class="form-horizontal">
+                                <input type="hidden" name="lx" value="1"/>
+                                <fieldset id="addFieldset">
+                                    <h4>基本信息</h4>
+                                    <div class="form-group form-group-sm">
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">检查分类</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select type="text" name="jcfl" class="form-control rcDropdownInit selectpicker required"
+                                                        data-type="st_jcfs">
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">检查时间</label>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <div class="input-group jcsj">
+                                                    <input class="form-control sj" type="text" readonly>
+                                                    <input class="hide" type="text" name="jckssj">
+                                                    <input class="hide" type="text" name="jcjssj">
+                                                    <span class="input-group-addon"><span
+                                                            class="glyphicon glyphicon-calendar"></span></span>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">稽查人员</label>
+                                            <input class="hide" name="jcry"/>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select name="workNumber" class="selectpicker form-control required"
+                                                        data-live-search="true" title="--请选择--">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">其他检查人</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="qtry" class="form-control"
+                                                       placeholder="其他检查人">
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">陪同人员</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="ptry" class="form-control"
+                                                       placeholder="陪同人员">
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">检查资料时间段</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="jczlsjd" class="form-control required"
+                                                       placeholder="检查资料时间段">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">货运中心</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select name="ty1" class="selectpicker form-control required"
+                                                        data-live-search="true">
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">经营部</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select name="ty2" class="selectpicker form-control required"
+                                                        data-live-search="true">
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">站</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select name="ty3" class="selectpicker form-control required"
+                                                        data-live-search="true">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4>具体问题</h4>
+                                    <div class="form-group">
+                                        <div class="ibox-tools">
+                                            <a class="btn btn-primary btn-xs del" href="javascript:void(0)"
+                                                id="hy_table1_del">
+                                                <i class="glyphicon glyphicon-minus"></i>
+                                            </a>
+                                            <a class="btn btn-primary btn-xs add" href="javascript:void(0)"
+                                               id="hy_table1_add">
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                            </a>
+                                        </div>
+                                        <table id="hy_table1" class="table wt"></table>
+                                    </div>
+                                    <h4>漏（欠）收款处理通知书</h4>
+                                    <div class="form-group">
+                                        <div class="ibox-tools">
+                                            <a class="btn btn-primary btn-xs del" href="javascript:void(0)"
+                                               id="hy_table2_del">
+                                                <i class="glyphicon glyphicon-minus"></i>
+                                            </a>
+                                            <a class="btn btn-primary btn-xs add" href="javascript:void(0)"
+                                               id="hy_table2_add">
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                            </a>
+                                        </div>
+                                        <table id="hy_table2" class="table"></table>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="ibox-tools">
+                                            <button type="button" class="btn btn-primary save" id="save1"><span
+                                                    class="glyphicon btn-primary"></span><span>&nbsp;保存&nbsp;</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                        </div>
+                        <div id="tab2" class="tab-pane">
+                            <form id="ky_form" class="form-horizontal">
+                                <input type="hidden" name="lx" value="2"/>
+                                <fieldset>
+                                    <h4>基本信息</h4>
+                                    <div class="form-group form-group-sm">
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">检查分类</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select type="text" name="jcfl" class="form-control rcDropdownInit selectpicker"
+                                                        data-type="st_jcfs">
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">检查时间</label>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <div class="input-group jcsj" id="jcsj">
+                                                    <input class="form-control sj" type="text"readonly>
+                                                    <input class="hide" type="text" name="jckssj">
+                                                    <input class="hide" type="text" name="jcjssj">
+                                                    <span class="input-group-addon"><span
+                                                            class="glyphicon glyphicon-calendar"></span></span>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">稽查人员</label>
+                                            <input class="hide" name="jcry"/>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select name="workNumber" class="selectpicker form-control required"
+                                                        data-live-search="true" title="--请选择--">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">其他检查人</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="qtry" class="form-control"
+                                                       placeholder="其他检查人">
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">陪同人员</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="ptry" class="form-control"
+                                                       placeholder="陪同人员">
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">检查资料时间段</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="jczlsjd" class="form-control required"
+                                                       placeholder="检查资料时间段">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">直属站(车务段)</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select name="ty1" class="selectpicker form-control required"
+                                                        data-live-search="true">
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">站</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select name="ty2" class="selectpicker form-control required"
+                                                        data-live-search="true">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4>检查情况</h4>
+                                    <div class="form-group">
+                                        <div class="ibox-tools">
+                                            <a class="btn btn-primary btn-xs del" href="javascript:void(0)"
+                                               id="ky_table1_del">
+                                                <i class="glyphicon glyphicon-minus"></i>
+                                            </a>
+                                            <a class="btn btn-primary btn-xs add" href="javascript:void(0)"
+                                               id="ky_table1_add">
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                            </a>
+                                        </div>
+                                        <table id="ky_table1" class="table"></table>
+                                    </div>
+                                    <h4>具体问题</h4>
+                                    <div class="form-group">
+                                        <div class="ibox-tools">
+                                            <a class="btn btn-primary btn-xs del" href="javascript:void(0)"
+                                               id="ky_table2_del">
+                                                <i class="glyphicon glyphicon-minus"></i>
+                                            </a>
+                                            <a class="btn btn-primary btn-xs add" href="javascript:void(0)"
+                                               id="ky_table2_add">
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                            </a>
+                                        </div>
+                                        <table id="ky_table2" class="table wt"></table>
+                                    </div>
+                                    <h4>漏（欠）收款处理通知书</h4>
+                                    <div class="form-group">
+                                        <div class="ibox-tools">
+                                            <a class="btn btn-primary btn-xs del" href="javascript:void(0)"
+                                               id="ky_table3_del">
+                                                <i class="glyphicon glyphicon-minus"></i>
+                                            </a>
+                                            <a class="btn btn-primary btn-xs add" href="javascript:void(0)"
+                                               id="ky_table3_add">
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                            </a>
+                                        </div>
+                                        <table id="ky_table3" class="table"></table>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="ibox-tools">
+                                            <button type="button" class="btn btn-primary save" id="save2"><span
+                                                    class="glyphicon btn-primary"></span><span>&nbsp;保存&nbsp;</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                        </div>
+                        <div id="tab3" class="tab-pane">
+                            <form id="lc_form" class="form-horizontal">
+                                <input type="hidden" name="lx" value="3"/>
+                                <fieldset>
+                                    <h4>基本信息</h4>
+                                    <div class="form-group form-group-sm">
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">检查分类</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select type="text" name="jcfl" class="form-control rcDropdownInit selectpicker"
+                                                        data-type="st_jcfs">
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">检查时间</label>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <div class="input-group jcsj">
+                                                    <input class="form-control sj" type="text" readonly>
+                                                    <input class="hide" type="text" name="jckssj">
+                                                    <input class="hide" type="text" name="jcjssj">
+                                                    <span class="input-group-addon"><span
+                                                            class="glyphicon glyphicon-calendar"></span></span>
+                                                </div>
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">稽查人员</label>
+                                            <input class="hide" name="jcry"/>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select name="workNumber" class="selectpicker form-control required"
+                                                        data-live-search="true" title="--请选择--">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">其他检查人</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="qtry" class="form-control"
+                                                       placeholder="其他检查人">
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">陪同人员</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="ptry" class="form-control"
+                                                       placeholder="陪同人员">
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">检查资料时间段</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="jczlsjd" class="form-control required"
+                                                       placeholder="检查资料时间段">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">客运段</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select name="ty1" class="selectpicker form-control required"
+                                                        data-live-search="true">
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">车队</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select name="ty2" class="selectpicker form-control required"
+                                                        data-live-search="true">
+                                                </select>
+                                            </div>
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">组</label>
+
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <select name="ty3" class="selectpicker form-control required"
+                                                        data-live-search="true">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">列车类型</label>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="lclx" class="form-control required">
+                                            </div>
+                                        </div>
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">被查车次</label>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="bccc" class="form-control required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-group-sm">
+                                        <div class="input-tip">
+                                            <label class="control-label col-xs-3 col-sm-3 col-md-3 col-lg-3">检查区间</label>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="jcqj1" class="form-control required">
+                                            </div>
+                                            <label class="control-label col-xs-1 col-sm-1 col-md-1 col-lg-1" style="text-align:center">
+                                                至
+                                            </label>
+                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                <input type="text" name="jcqj2" class="form-control required">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <h4>检查情况</h4>
+                                    <div class="form-group">
+                                        <div class="ibox-tools">
+                                            <a class="btn btn-primary btn-xs del" href="javascript:void(0)"
+                                               id="lc_table1_del">
+                                                <i class="glyphicon glyphicon-minus"></i>
+                                            </a>
+                                            <a class="btn btn-primary btn-xs add" href="javascript:void(0)"
+                                               id="lc_table1_add">
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                            </a>
+                                        </div>
+                                        <table id="lc_table1" class="table"></table>
+                                    </div>
+                                    <h4>具体问题</h4>
+                                    <div class="form-group">
+                                        <div class="ibox-tools">
+                                            <a class="btn btn-primary btn-xs del" href="javascript:void(0)"
+                                               id="lc_table2_del">
+                                                <i class="glyphicon glyphicon-minus"></i>
+                                            </a>
+                                            <a class="btn btn-primary btn-xs add" href="javascript:void(0)"
+                                               id="lc_table2_add">
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                            </a>
+                                        </div>
+                                        <table id="lc_table2" class="table wt"></table>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="ibox-tools">
+                                            <button type="button" class="btn btn-primary save" id="save3"><span
+                                                    class="glyphicon btn-primary"></span><span>&nbsp;保存&nbsp;</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+</body>
+
+<script src="../../common/js/jquery-2.1.1.min.js?rev=6631a779321bc03f4a5281d3ff526254"></script>
+<script src="../../common/plugs/bootstrap-3.3.5/js/bootstrap.min.js?rev=4becdc9104623e891fbb9d38bba01be4"></script>
+<script src="../../common/plugs/layer/layer.js?rev=8962f047eeb03c06cf8200de1bf8ab99"></script>
+<script src="../../common/js/mock.js"></script>
+<script src="../../common/plugs/jquery-validation/dist/jquery.validate.min.js?rev=3b00d60f87e893caf2649eff0d48813a"></script>
+<script src="../../common/plugs/jquery-validation/dist/localization/messages_zh.min.js?rev=6979ac84406e8c982e578736d368b3f8"></script>
+<script src="../../common/js/jquery.form.js"></script>
+<script src="../../common/js/jquery.values.js"></script>
+
+<script src="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../common/plugs/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+<script src="../../common/plugs/ztree/js/jquery.ztree.excheck-3.5.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/extensions/editable/js/bootstrap-editable.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/extensions/editable/bootstrap-table-editable.js"></script>
+<script src="../../common/plugs/daterangepicker-master/moment.min.js"></script>
+<script src="../../common/plugs/daterangepicker-master/daterangepicker.js"></script>
+<script src="../../common/plugs/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js"></script>
+<script src="../../common/js/URL.js"></script>
+<script src="../../common/js/iframeCommon.js"></script>
+<script src="../../js/bizywgl/gzxsEdit.js"></script>

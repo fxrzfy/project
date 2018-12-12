@@ -1,0 +1,83 @@
+<div class="row">
+	<div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+		<div class="ibox float-e-margins">
+			<input type="hidden" id="businessObjectId">
+			<form id="creditForm" class="form-horizontal">
+			    <table id="table_4" data-ajax="dataLoad_4">
+	              <thead>
+	                <tr>
+	                  <th data-field="customerName">客户名称</th>
+	                  <th data-field="cardNo">证件号码</th>
+	                  <th data-field="cardType">证件类型</th>
+	                  <th data-field="customerManager">客户经理</th>
+	                  <th data-field="inquryBank">调查银行</th>
+	                  <th data-field="creditResult">征信结果</th>
+	                  <th data-field="creditStatus">征信状态</th>
+	                  <th data-field="checkDate">调查日期</th>
+	                  <th data-formatter="handle_4" data-events="tableEvent_4">操作</th>
+	                </tr>
+	              </thead>
+	            </table>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="row" id="his">
+
+	<div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+		<div class="ibox float-e-margins">
+		<h3>历史反欺诈数据详情</h3>
+			<input type="hidden" id="businessObjectId">
+			<form id="creditForm" class="form-horizontal">
+			    <table id="table_5" data-ajax="dataLoad_5">
+	              <thead>
+	                <tr>
+	                  <th data-field="customerName">客户名称</th>
+	                  <th data-field="borrowerRelationship" data-formatter="borrowerRelationship">与借款人关系</th>
+	                  <th data-field="cardNo">证件号码</th>
+	                  <th data-field="createTime">获取日期</th>
+	                  <th data-formatter="handle_5" data-events="tableEvent_5">操作</th>
+	                </tr>
+	              </thead>
+	            </table>
+			</form>
+		</div>
+	</div>
+</div>
+<!--反欺诈数据展示模态框  -->
+    <div class="modal fade" id="fqzModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+	<div class="modal-dialog" style="width:1000px">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					反欺诈数据评估表
+				</h4>
+			</div>
+			<div class="modal-body " >
+			
+				<p style="color: red">注：</p>
+				<p style="color: red">1：低风险黑体</p>
+				<p style="color: red">2：中风险蓝色</p>
+				<p style="color: red">3：高风险红色</p>
+				<table id="table_fanqi_model" class="table table-bordered" >
+					<thead>
+						<tr>
+							<th data-field="fieldName">字段名称</th>
+							<th data-field="dataFrom">数据来源</th>
+							<th data-field="dataRule">数据格式与限制</th>
+							<th data-field="result">结果</th>
+<!-- 							<th data-field="riskLevel" data-formatter="riskLevel">风险等级</th> -->
+						</tr>
+					</thead>
+					<tbody>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	</div>
+<script type="text/javascript" src="../../../js/common/commonCreditInfo/creditInfo.js"></script>

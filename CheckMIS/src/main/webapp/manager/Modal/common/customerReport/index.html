@@ -1,0 +1,268 @@
+<form id="customerReportForm" class="form-horizontal">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                主借人基本信息 <span id="zmScoreCus"
+                              style="font-size: 14px; color: #1ab394; float: right;"></span>
+            </h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="form-group form-group-sm">
+                <div class="input-tip">
+                    <label class="col-xs-3 col-sm-3 col-md-3 control-label">报告编号：</label>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <input type="text" name="reportId" id="reportId"
+                               class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="input-tip">
+                    <label class="col-xs-3 col-sm-3 col-md-3 control-label">报告时间：</label>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <input type="text" name="reportTime" id="reportTime"
+                               class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="input-tip">
+                    <label class="col-xs-3 col-sm-3 col-md-3 control-label">报告获取手机：</label>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <input type="text" name="authMobile" id="authMobile"
+                               class="form-control" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
+                <div class="input-tip">
+                    <label class="col-xs-3 col-sm-3 col-md-3 control-label">客户姓名：</label>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <input type="text" id="customerName" name="customerName"
+                               class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="input-tip">
+                    <label class="col-xs-3 col-sm-3 col-md-3 control-label">身份证号码：</label>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <input type="text" id="identityCardNumber"
+                               name="identityCardNumber" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="input-tip">
+                    <label class="col-xs-3 col-sm-3 col-md-3 control-label">性别：</label>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <input type="text" id="gender" name="gender"
+                               class="form-control" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group form-group-sm">
+                <div class="input-tip">
+                    <label class="col-xs-3 col-sm-3 col-md-3 control-label">客户年龄：</label>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <input type="text" name="cusAge" id="cusAge"
+                               class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="input-tip">
+                    <label class="col-xs-3 col-sm-3 col-md-3 control-label">出生地区：</label>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <input type="text" name="borthArea" id="borthArea"
+                               class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="input-tip">
+                    <label class="col-xs-3 col-sm-3 col-md-3 control-label">星座：</label>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <input type="text" name="sign" id="sign" class="form-control"
+                               readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">申报信息核查</h3>
+    </div>
+    <div class="panel-body">
+        <h2 id="table_application_check_h"
+            style="text-align: center; dispaly: none;">未获取到信息</h2>
+        <div id="applicationCheck" class="">
+            <table id="table_application_check" data-toggle="table"
+                   data-ajax="dataLoad_application_check">
+                <thead>
+                <tr>
+                    <th data-field="check_point">检查项</th>
+                    <th data-field="result">结果</th>
+                    <th data-field="evidence">依据</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">推断风险点</h3>
+    </div>
+    <div class="panel-body">
+        <h2 id="table_behavior_check_h"
+            style="text-align: center; dispaly: none;">未获取到信息</h2>
+        <div id="behaviorCheck" class="">
+            <table id="table_behavior_check" data-toggle="table"
+                   data-ajax="dataLoad_behavior_check">
+                <thead>
+                <tr>
+                    <th data-field="check_point">检查项</th>
+                    <th data-field="result">结果</th>
+                    <th data-field="evidence">依据</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">客户通讯录信息<span id="mobileListSpan" class='text-danger'
+                                             style='float:right;'></span></h3>
+    </div>
+    <div style="height: 20px; width: 100%"></div>
+    <div id="mobileListDiv" style="margin: 0 auto; width: 96%;">
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">通话次数排名</h3>
+    </div>
+    <div class="panel-body">
+        <h2 id="table_contact_list_h"
+            style="text-align: center; dispaly: none;">未获取到信息</h2>
+        <div id="contactList" class="">
+            <table id="table_contact_list" data-toggle="table"
+                   data-ajax="dataLoad_contact_list">
+                <thead>
+                <tr>
+                    <th data-field="phone_num">号码</th>
+                    <th data-field="contact_name">互联网标识</th>
+                    <th data-field="needs_type">需求类型</th>
+                    <th data-field="phone_num_loc">归属地</th>
+                    <th data-field="call_cnt">联系次数</th>
+                    <th data-field="call_len">联系时间(分)</th>
+                    <th data-field="call_out_cnt">主叫次数</th>
+                    <th data-field="call_in_cnt">被叫次数</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">联系人地区排名</h3>
+    </div>
+    <div class="panel-body">
+        <h2 id="table_contact_region_h"
+            style="text-align: center; dispaly: none;">未获取到信息</h2>
+        <div id="contactRegion" class="">
+            <table id="table_contact_region" data-toggle="table"
+                   data-ajax="dataLoad_contact_region">
+                <thead>
+                <tr>
+                    <th data-field="region_loc">地区</th>
+                    <th data-field="region_uniq_num_cnt">号码数量</th>
+                    <th data-field="region_call_in_cnt">电话呼入次数</th>
+                    <th data-field="region_call_in_time">电话呼入时间(分)</th>
+                    <th data-field="region_call_out_cnt">电话呼出次数</th>
+                    <th data-field="region_call_out_time">电话呼出时间(分)</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">运营商月账单</h3>
+    </div>
+    <div class="panel-body">
+        <h2 id="table_cell_behavior_h"
+            style="text-align: center; dispaly: none;">未获取到信息</h2>
+        <div id="cellBehavior" class="">
+            <table id="table_cell_behavior" data-toggle="table"
+                   data-ajax="dataLoad_cell_behavior">
+                <thead>
+                <tr>
+                    <th data-field="cell_mth">月份</th>
+                    <th data-field="call_out_time">主叫时间(分钟)</th>
+                    <th data-field="call_in_time">被叫时间(分钟)</th>
+                    <th data-field="">通话时间(分钟)</th>
+                    <th data-field="call_cnt">通话次数</th>
+                    <th data-field="sms_cnt">短信</th>
+                    <th data-field="total_amount">消费金额</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">出行数据</h3>
+    </div>
+    <div class="panel-body">
+        <h2 id="table_trip_info_h"
+            style="text-align: center; dispaly: none;">运营商漫游记录中无出行记录发现</h2>
+        <div id="tripInfo" class="">
+            <table id="table_trip_info" data-toggle="table"
+                   data-ajax="dataLoad_trip_info">
+                <thead>
+                <tr>
+                    <th data-field="trip_leave">出发地</th>
+                    <th data-field="trip_dest">目的地</th>
+                    <th data-field="trip_transportation">出行工具</th>
+                    <th data-field="trip_person">同行人</th>
+                    <th data-field="trip_type">出行时间类型</th>
+                    <th data-field="trip_start_time">出行开始时间</th>
+                    <th data-field="trip_end_time">出行结束时间</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">常用服务</h3>
+    </div>
+    <div class="panel-body">
+        <h2 id="table_trip_consume_h"
+            style="text-align: center; dispaly: none;">无常用服务</h2>
+        <div id="tripConsume" class="">
+            <table id="table_trip_consume" data-toggle="table"
+                   data-ajax="dataLoad_trip_consume">
+                <thead>
+                <tr>
+                    <th data-field="order_date">下单时间</th>
+                    <th data-field="flight_spend">机票消费</th>
+                    <th data-field="train_spend">火车消费</th>
+                    <th data-field="hotel_spend">酒店消费</th>
+                    <th data-field="count">月度消费频次(/人次)</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="../../../js/customerappManage/linkCar/loancusmobilelist.js"></script>
+<script src="../../../js/customerappManage/linkCar/loancuscommreport.js"></script>

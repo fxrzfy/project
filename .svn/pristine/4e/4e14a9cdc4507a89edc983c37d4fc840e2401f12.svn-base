@@ -1,0 +1,296 @@
+
+<div class="row">
+    <div class="col-xs-24 col-sm-24 col-md-24">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    贷款关系人信息
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="text-right">
+                    <button type="button" class="btn btn-primary btn-sm" id="addButton" style="display:none">
+                        新增外呼联系人
+                    </button>
+                </div>
+                <table id="table1" data-toggle="table" data-ajax="table_1">
+                    <thead>
+                    <tr>
+                        <th data-field="mobileOwner">姓名</th>
+                        <th data-field="mobilePhone" data-formatter="handle_0" data-events="tableEvent">手机号码</th>
+                        <th data-field="loanRelationship" data-formatter="loanRelationshipFormatter">贷款关系人</th>
+                        <th data-field="relationship" data-formatter="relationship">关系</th>
+                        <th data-field="remark">备注</th>
+                        <th data-field="canModify" data-formatter="handle_1" data-events="tableEvent1">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    通话记录
+                </h3>
+            </div>
+            <div class="panel-body">
+                <form id="searchForm" class="form-horizontal">
+                    <div class="form-group form-group-sm">
+                        <div class="input-tip">
+                            <label class="col-xs-3 col-sm-3 col-md-3 control-label">主叫姓名：</label>
+                            <div class="col-xs-5 col-sm-5 col-md-5">
+                                <input type="text" name="originatingCallName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="input-tip">
+                            <label class="col-xs-3 col-sm-3 col-md-3 control-label">手机号码：</label>
+                            <div class="col-xs-5 col-sm-5 col-md-5">
+                                <input type="text" name="mobilePhone" class="form-control">
+                            </div>
+                        </div>
+                        <div class="input-tip">
+                            <label class="col-xs-3 col-sm-3 col-md-3 control-label">通话方向：</label>
+                            <div class="col-xs-5 col-sm-5 col-md-5">
+                                <select name="direction" class="form-control">
+                                    <option value="" selected>--请选择--</option>
+                                    <option value="1">呼出</option>
+                                    <option value="0">呼入</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <div class="input-tip">
+                            <label class="col-xs-3 col-sm-3 col-md-3 control-label">通话类型：</label>
+                            <div class="col-xs-5 col-sm-5 col-md-5">
+                                <select name="callType" class="form-control">
+                                    <option value="" selected>--请选择--</option>
+                                    <option value="1">总部电审</option>
+                                    <option value="2">还款管理</option>
+                                    <option value="3">电话催收</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <div class="col-xs-24 col-sm-24 col-md-24 text-center">
+                            <button type="button" class="btn btn-primary" id="btn-search" modal="enter"><span
+                                    class="glyphicon glyphicon-search"></span><span>&nbsp;查询&nbsp;</span>
+                            </button>
+                            <button type="button" class="btn btn-white" modal="reset"><span
+                                    class="glyphicon glyphicon-remove"></span><span>&nbsp;清除查询条件&nbsp;</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <table id="table2" data-toggle="table" data-ajax="table_2">
+                    <thead>
+                    <tr>
+                        <th data-field="callType" data-formatter="callTypeFormatter">通话类型</th>
+                        <th data-field="direction" data-formatter="directionFormatter">通话方向</th>
+                        <th data-field="isAnswered" data-formatter="isAnsweredFormatter">接听标识</th>
+                        <th data-field="originatingCallName">主叫人姓名</th>
+                        <th data-field="terminatingCallName">被叫人姓名</th>
+                        <th data-field="mobilePhone">手机号码</th>
+                        <th data-field="loanRelationship" data-formatter="loanRelationshipFormatter">贷款关系人</th>
+                        <th data-field="startTimeText">接通时间</th>
+                        <th data-field="endTimeText">挂断时间</th>
+                        <th data-field="talkTimeText">通话时长</th>
+                        <th data-field="recordingAddress" data-formatter="handle_2" data-events="tableEvent2">通话内容</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!--音乐播放器-->
+        <section class="vbox hide" id="audioVbox">
+            <div id="jp_container_N" class="bg-success">
+                <div class="jp-type-playlist">
+                    <div id="jplayer_N" class="jp-jplayer hide"></div>
+                    <div class="jp-gui">
+                        <div class="jp-video-play hide">
+                            <a class="jp-video-play-icon">play</a>
+                        </div>
+                        <div class="jp-interface">
+                            <div class="jp-controls">
+                                <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>
+                                <div>
+                                    <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
+                                    <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
+                                </div>
+                                <div><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
+                                <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
+                                <div>
+                                    <a class="" data-toggle="dropdown" data-target="#playlist">
+                                        <i class="icon-playlist"></i></a>
+                                </div>
+                                <div class="jp-progress hidden-xs">
+                                    <div class="jp-seek-bar">
+                                        <div class="jp-play-bar bg">
+
+                                        </div>
+                                        <div class="jp-title text-lt">
+                                            <ul>
+                                                <li></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
+                                <div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
+                                <div class="hidden-xs hidden-sm">
+                                    <a class="jp-mute" title="mute"><i class="icon-volume-2"></i></a>
+                                    <a class="jp-unmute hid" title="unmute"><i class="icon-volume-off"></i></a>
+                                </div>
+                                <div class="hidden-xs hidden-sm jp-volume">
+                                    <div class="jp-volume-bar dk volume-bor">
+                                        <div class="jp-volume-bar-value lter "></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a class="jp-shuffle" title="shuffle"><i class="icon-shuffle text-muted"></i></a>
+                                    <a class="jp-shuffle-off hid" title="shuffle off"><i class="icon-shuffle text-lt"></i></a>
+                                </div>
+                                <div>
+                                    <a class="jp-repeat" title="repeat"><i class="icon-loop text-muted"></i></a>
+                                    <a class="jp-repeat-off hid" title="repeat off"><i class="icon-loop text-lt"></i></a>
+                                </div>
+                                <div class="hide">
+                                    <a class="jp-full-screen" title="full screen"><i
+                                            class="fa fa-expand"></i></a>
+                                    <a class="jp-restore-screen" title="restore screen"><i
+                                            class="fa fa-compress text-lt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="jp-playlist dropup" id="playlist">
+                        <ul class="dropdown-menu aside-xl dker">
+                            <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+                            <li class="list-group-item"></li>
+                        </ul>
+                    </div>
+                    <div class="jp-no-solution hide">
+                        <span>Update Required</span> To play the media you will need to either update your
+                        browser to a recent
+                        version or update your Flash plugin .
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!--<video controls=""  name="media"><source src="http://www.jplayer.org/audio/mp3/Miaow-05-The-separation.mp3" type="audio/mpeg"></video>-->
+<!--<video controls=""  name="media"><source src="http://www.jplayer.org/audio/mp3/Miaow-05-The-separation.mp3" type="audio/mpeg"></video>-->
+
+<!--<a href="#" class="jp-play-fun pull-right m-t-sm m-l text-md" data-url = '{"title": "The wheel of fortune", "artist": "Yang Bingyin", "mp3": "http://music.163.com/song/media/outer/url?id=476515941.mp3", "poster": "http://p1.music.126.net/4xHOkSVWH-n6p5pB3Jf0yQ==/109951162922204274.jpg?param=130y130" }'>-->
+    <!--<i class="icon-control-play text"></i>-->
+    <!--<i class="icon-control-pause text-active"></i>-->
+<!--</a>-->
+
+<!--<a href="#" class="jp-play-fun pull-right m-t-sm m-l text-md" data-url='{"title": "The 444444 of fortune", "artist": "Yang 44444", "mp3": "http://music.163.com/song/media/outer/url?id=496902072.mp3", "poster": "http://p1.music.126.net/4xHOkSVWH-n6p5pB3Jf0yQ==/109951162922204274.jpg?param=130y130" }'>-->
+    <!--<i class="icon-control-play text"></i>-->
+    <!--<i class="icon-control-pause text-active"></i>-->
+<!--</a>-->                 
+                        
+	<div id="Dialog_call_connect" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" type="button" aria-hidden="true" data-dismiss="modal">×</button>
+					<h4 class="modal-title" style="text-align:center;font-size:20px;"></h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal callConnect-form">
+						<input type="hidden" class="form-control" placeholder="" name="id" value="" id="id">
+						<div class="form-group form-group-sm">
+							<div class="input-tip">
+								<label class="col-xs-5 col-sm-5 col-md-5 control-label">机主姓名：</label>
+
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<input type="text" class="form-control" placeholder="" id="mobileOwner" name="mobileOwner" value="" required="" aria-required="true">
+								</div>
+							</div>
+							<div class="input-tip">
+								<label class="col-xs-5 col-sm-5 col-md-5 control-label">手机号码：</label>
+
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<input type="text" class="form-control" placeholder="" id="mobilePhone" name="mobilePhone" value="" required="" aria-required="true">
+								</div>
+							</div>
+							
+						</div>
+
+						<div class="form-group form-group-sm">
+							<div class="input-tip">
+								<label class="col-xs-5 col-sm-5 col-md-5 control-label">贷款关系：</label>
+
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<select id = "loanRelationship" name="loanRelationship" class="form-control" required="" aria-required="true">
+										<option value="" selected>--请选择--</option>
+										<option value="3">实际用车人</option>
+										<option value="4">实际还款人</option>
+										<option value="5">其他联系人</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="input-tip">
+								<label class="col-xs-5 col-sm-5 col-md-5 control-label">关系：</label>
+
+								<div class="col-xs-6 col-sm-6 col-md-6">
+									<select id="relationship" name="relationship" class="form-control" required="" aria-required="true">
+										<option value="" selected>--请选择--</option>
+									</select>
+								</div>
+							</div>
+							
+							
+							
+						</div>
+
+						<div class="form-group form-group-sm">
+							<div class="input-tip">
+								<label class="col-xs-5 col-sm-5 col-md-5 control-label">备注：</label>
+
+								<div class="col-xs-15 col-sm-15 col-md-15">
+									<textarea name="remark" id="remark" class="form-control" rows="3"></textarea>
+								</div>
+							</div>
+						</div>
+					</form>
+
+					<div class="form-horizontal" style="margin-top: 20px;margin-left: 150px;" >
+						<div class="form-group form-group-sm" >
+							<div class="form-group">
+								<div class="col-md-12 text-right">
+									<button class="btn btn-primary saveConnect" type="button">
+										&nbsp;&nbsp;保存&nbsp;&nbsp;
+									</button>
+									<button modal="reset" class="btn btn-default" style="margin-left:20px" type="button" data-dismiss="modal">
+										&nbsp;&nbsp;取消&nbsp;&nbsp;
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<script type="text/javascript" src="../../../common/plugs/jPlayer/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="../../../common/plugs/jPlayer/add-on/jplayer.playlist.min.js"></script>
+<script type="text/javascript" src="../../../common/plugs/jPlayer/demo.js"></script>
+<script type="text/javascript" charset="utf-8">
+    $("head").append([
+    	'<link rel="stylesheet" href="../../../common/plugs/jPlayer/jplayer.flat.css"/>', 
+        '<script src="../../../js/task/myTask/common/base.js"><\/script>',
+        '<script src="../../../js/common/communication/menuManage.js"><\/script>'
+    ].join(""));
+</script>

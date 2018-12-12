@@ -1,0 +1,31 @@
+.ztree li span.button.company_ico_docu,.ztree li span.button.company_ico_open,.ztree li span.button.company_ico_close{
+    margin-bottom:2px;
+    background-size: 15px 15px;
+    background-image:url('../images/building/company_6.png');
+}
+
+.ztree li span.button.house_ico_docu,.ztree li span.button.house_ico_open,.ztree li span.button.house_ico_close{
+    margin-bottom:2px;
+    background-size: 15px 15px;
+    background-image:url('../images/building/house.png');
+}
+
+.ztree li span.button.group_ico_docu,.ztree li span.button.group_ico_open,.ztree li span.button.group_ico_close{
+    margin-bottom:2px;
+    background-size: 15px 15px;
+    background-image:url('../images/building/department_2.png');
+}
+
+.ztree li span.button.roots_open, .ztree li span.button.root_open, .ztree li span.button.center_open, .ztree li span.button.bottom_open{
+    background-size: 12px 12px;
+    background-position: 0 0;
+    background-position:center;
+    background-image:url('../images/symbol/close_1.png');
+}
+
+.ztree li span.button.roots_close, .ztree li span.button.root_close, .ztree li span.button.center_close, .ztree li span.button.bottom_close{
+    background-size: 12px 12px;
+    background-position: 0 0;
+    background-position:center;
+    background-image:url('../images/symbol/open_1.png');
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../common/css/style.min.css"/>
+    <link rel="stylesheet" href="../../common/plugs/layer/skin/layer.css?rev=433a1dd8df8c4851be764e907f6d758a"/>
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../common/plugs/ztree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet"
+          href="../../common/plugs/bootstrap-table/dist/extensions/editable/css/bootstrap-editable.css">
+    <title>菜单管理</title>
+
+</head>
+</html>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-24">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="tab-pane">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">菜单管理</h3>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-24">
+                                            <button type="button" class="btn btn-primary" id="add" modal="enter"
+                                                    style="margin-top: 5px;"><span>&nbsp;新增&nbsp;</span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary edzz" id="modifyzz" modal="enter"
+                                                    style="margin-top: 5px;"><span>&nbsp;修改&nbsp;</span>
+                                            </button>
+                                            <button type="button" class="btn btn-primary edzz" id="del" modal="enter"
+                                                    style="margin-top: 5px;"><span>&nbsp;刪除&nbsp;</span>
+                                            </button>
+                                            <!-- <button type="button" class="btn btn-primary" id="stop" modal="enter"><span class="glyphicon btn-primary"></span><span>&nbsp;停用&nbsp;</span></button>
+                                            <button type="button" class="btn btn-primary" id="del" modal="enter"><span class="glyphicon btn-primary"></span><span>&nbsp;删除&nbsp;</span></button> -->
+                                        </div>
+                                    </div>
+                                    <div style="height:600px;overflow:auto;" class="panel-body">
+                                        <input type="hidden" value="y" id="typestr"/>
+                                        <ul id="tree" class="ztree"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <form id="searchForm" class="form-horizontal">
+                                <input type="hidden" name="zszId" value="-1" id="zszId"/>
+                                <input type="hidden" name="type" value="-1" id="ptype"/>
+                            </form>
+                            <div class="col-md-18">
+                                <div class="panel panel-default partyList">
+                                    <div class="panel-body">
+                                        <div class="ibox-content">
+                                                <div style="text-align:right;">
+                                                    <input type="button" id="zddelAll" class="btn btn-primary edzz " value="删除"/>
+                                                    <input type="button" id="zdaddNew" class="btn btn-primary edzz " value="新增"/>
+                                                    <input type="button" id="sync" class="btn btn-primary  " data-value="3" value="同步"/>
+                                                </div>
+                                                <table id="table1" data-toggle="table" data-ajax="table_1" class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th data-field="state" data-checkbox="true">选择</th>
+                                                        <th data-field="id" class="hide"></th>
+                                                        <th data-field="roleId" class="hide">序号</th>
+                                                        <th data-field="code" data-formatter="editCode">编号</th>
+                                                        <th data-field="name" data-formatter="editTeam">车站名称</th>
+                                                    </tr>
+                                                    </thead>
+                                                </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="addOrg" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+    <div class="modal-dialog" style="width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">新增</h4>
+            </div>
+            <div class="modal-body">
+                <form id="addOrgForm" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-48 text-right">
+                            <div class="form-group form-group-sm">
+                                <div class="input-tip">
+                                    <label class="col-md-4 col-xs-4 col-sm-4 control-label">名称：</label>
+                                    <div class="col-md-6 col-xs-6 col-sm-6">
+                                        <input type="hidden" name="id"   />
+                                        <input type="hidden" name="type"   />
+                                        <input type="hidden" name="pid"   />
+
+
+                                        <input type="text" name="name" placeholder="请输入名称"    class="form-control required" maxlength="20"  />
+                                    </div>
+                                </div>
+                                <div class="input-tip">
+                                    <label class="col-md-4 col-xs-4 col-sm-4 control-label">代码：</label>
+                                    <div class="col-md-6 col-xs-6 col-sm-6">
+                                        <input type="text" name="code" placeholder="请输入代码"  class="form-control required" maxlength="20"  />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="saveOrg" class="btn btn-info">保存</button>
+                <button data-dismiss="modal" class="btn btn-default">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="addSub" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+    <div class="modal-dialog" style="width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">新增</h4>
+            </div>
+            <div class="modal-body">
+                <form id="addSubForm" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-48 text-right">
+                            <div class="form-group form-group-sm">
+                                <div class="input-tip">
+                                    <label class="col-md-4 col-xs-4 col-sm-4 control-label">名称：</label>
+                                    <div class="col-md-6 col-xs-6 col-sm-6">
+                                        <input type="hidden" name="pk"   />
+                                        <input type="hidden" name="name" value="name"   />
+                                        <input type="text" name="value" placeholder="请输入名称"    class="form-control required" maxlength="20"  />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="saveSub" class="btn btn-info">保存</button>
+                <button data-dismiss="modal" class="btn btn-default">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+<script src="../../common/js/jquery-2.1.1.min.js?rev=6631a779321bc03f4a5281d3ff526254"></script>
+<script src="../../common/plugs/bootstrap-3.3.5/js/bootstrap.min.js?rev=4becdc9104623e891fbb9d38bba01be4"></script>
+<script src="../../common/plugs/layer/layer.js?rev=8962f047eeb03c06cf8200de1bf8ab99"></script>
+<script src="../../common/js/mock.js"></script>
+<script src="../../common/plugs/jquery-validation/dist/jquery.validate.min.js?rev=3b00d60f87e893caf2649eff0d48813a"></script>
+<script src="../../common/plugs/jquery-validation/dist/localization/messages_zh.min.js?rev=6979ac84406e8c982e578736d368b3f8"></script>
+<script src="../../common/js/iframeCommon.js?rev=1447835709082"></script>
+<script src="../../common/js/jquery.form.js"></script>
+<script src="../../common/js/jquery.values.js"></script>
+<script src="../../common/js/LocalResizeIMG.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../common/plugs/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/extensions/editable/js/bootstrap-editable.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/extensions/editable/bootstrap-table-editable.js"></script>
+<script src="../../common/js/URL.js"></script>
+<script src="../../js/dict/zszManage.js"></script>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../common/css/style.min.css"/>
+    <link rel="stylesheet" href="../../common/plugs/layer/skin/layer.css?rev=433a1dd8df8c4851be764e907f6d758a"/>
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../common/plugs/ztree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet" href="../../css/ztreeicon.css">
+    <title>企业管理</title>
+
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-24">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="tab-pane">
+                        <div style="text-align:right;">
+                            <button type="button" class="btn btn-primary" id="add" ><span
+                                    class="glyphicon btn-primary"></span><span>&nbsp;新增&nbsp;</span>
+                            </button>
+                            <button type="button" class="btn btn-primary" id="modify"><span
+                                    class="glyphicon btn-primary"></span><span>&nbsp;修改&nbsp;</span>
+                            </button>
+                            <button type="button" class="btn btn-primary" id="delete" data-toggle="modal" data-target="#deleteDialog"><span
+                                    class="glyphicon btn-primary"></span><span>&nbsp;删除&nbsp;</span>
+                            </button>
+                            <button type="button" class="btn btn-primary" id="save"
+                                    style="display:none"><span
+                                    class="glyphicon btn-primary"></span><span>&nbsp;保存&nbsp;</span>
+                            </button>
+                            <button type="button" class="btn btn-primary" id="cancel"
+                                    style="display:none"><span
+                                    class="glyphicon btn-primary"></span><span>&nbsp;取消&nbsp;</span>
+                            </button>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-8 col-xs-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">企业管理</h3>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-24">
+
+                                            <!-- <button type="button" class="btn btn-primary" id="stop" modal="enter"><span class="glyphicon btn-primary"></span><span>&nbsp;停用&nbsp;</span></button>
+                                            <button type="button" class="btn btn-primary" id="del" modal="enter"><span class="glyphicon btn-primary"></span><span>&nbsp;删除&nbsp;</span></button> -->
+                                        </div>
+                                    </div>
+                                    <div style="height:600px;overflow:auto;" class="panel-body">
+                                        <ul id="tree" class="ztree"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-18 col-sm-16 col-xs-12">
+                                <div class="panel panel-default partyList">
+                                    <div class="panel-body">
+                                        公司信息
+                                        <div class="ibox-content">
+                                            <form id="orgForm" class="form-horizontal">
+                                                <div class="form-group">
+                                                    <div class="col-md-24 text-right">
+                                                        <div class="form-group form-group-sm">
+                                                            <div class="input-tip">
+                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">单位编号：</label>
+                                                                <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                    <input type="text" id="code" name="code" placeholder="请输入单位编号"
+                                                                           class="form-control required" maxlength="20"  />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-group-sm">
+                                                            <div class="input-tip">
+                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">单位名称：</label>
+                                                                <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                    <input type="text" id="name" name="name" placeholder="请输入单位名称"
+                                                                           class="form-control required"
+                                                                           maxlength="100">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-group-sm">
+                                                            <div class="input-tip">
+                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">单位地址：</label>
+                                                                <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                    <input type="text" id="unitAddr" name="unitAddr" placeholder="请输入单位地址"
+                                                                           class="form-control required"
+                                                                           maxlength="100">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-group-sm">
+                                                            <div class="input-tip">
+                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">单位电话：</label>
+                                                                <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                    <input type="text" id="unitPhone" name="unitPhone" placeholder="请输入单位电话"
+                                                                           class="form-control required"
+                                                                           maxlength="100">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-group-sm">
+                                                            <div class="input-tip">
+                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">单位传真：</label>
+                                                                <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                    <input type="text" id="unitFax" name="unitFax" placeholder="请输入单位传真"
+                                                                           class="form-control required"
+                                                                           maxlength="100">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-group-sm">
+                                                            <div class="input-tip">
+                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">邮编：</label>
+                                                                <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                    <input type="text" id="postCode" name="postCode" placeholder="请输入邮编"
+                                                                           class="form-control required"
+                                                                           maxlength="100">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-group-sm">
+                                                            <div class="input-tip">
+                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">联系人：<span></span></label>
+                                                                <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                    <input type="text" id="unitContact" name="unitContact" placeholder="请输入联系人"
+                                                                           class="form-control required"
+                                                                           maxlength="100">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-group-sm">
+                                                            <div class="input-tip">
+                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">联系电话：</label>
+                                                                <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                    <input type="text" id="unitMobile" name="unitMobile" placeholder="请输入联系电话"
+                                                                           class="form-control required"
+                                                                           maxlength="100">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <input type="hidden" id="id" name="id"   />
+                                                        <input type="hidden" id="parentId" name="parentId"/>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="addOrg" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+    <div class="modal-dialog" style="width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">新增菜单</h4>
+            </div>
+            <div class="modal-body">
+                <form id="addOrgForm" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-48 text-right">
+                            <div class="form-group form-group-sm">
+                                <div class="input-tip">
+                                    <label class="col-md-4 col-xs-4 col-sm-4 control-label">名称：</label>
+                                    <div class="col-md-6 col-xs-6 col-sm-6">
+                                        <input type="hidden" name="id"   />
+                                        <input type="text" name="name" placeholder="请输入名称"
+                                               class="form-control required" maxlength="20"  />
+                                    </div>
+                                </div>
+                                <div class="input-tip">
+                                    <label class="col-md-4 col-xs-4 col-sm-4 control-label">类型：</label>
+                                    <div class="col-md-6 col-xs-6 col-sm-6">
+                                        <select name="type" class="form-control required rcDropdownInit" data-type="check_buttton_type">
+                                            <!--<option value="1">菜单</option>
+                                            <option value="2">按钮</option>-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <div class="input-tip">
+                                    <label class="col-md-4 col-xs-4 col-sm-4 control-label">URL：</label>
+                                    <div class="col-md-9 col-xs-6 col-sm-8">
+                                        <input type="text" name="url" placeholder="输入地址"
+                                               class="form-control required"
+                                               maxlength="100">
+                                    </div>
+                                </div>
+                                <div class="input-tip">
+                                    <label class="col-md-3 col-xs-3 col-sm-3 control-label">父节点：</label>
+                                    <div class="col-md-6 col-xs-6 col-sm-6">
+                                        <input type="hidden" name="pid"   />
+                                        <input type="text" name="pname" placeholder="输入地址"
+                                               class="form-control required readInput"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm orgInfo departInfo">
+                                <div class="input-tip">
+                                    <label class="col-md-4 col-xs-4 col-sm-4 control-label orgInfo">顺序：</label>
+                                    <div class="col-md-6 col-xs-6 col-sm-6">
+                                        <input type="text" name="orders" placeholder="请输入顺序"
+                                               class="form-control required number ">
+                                    </div>
+                                </div>
+                                <div class="input-tip orgInfo">
+                                    <label class="col-md-4 col-xs-4 col-sm-4 control-label">图标：</label>
+                                    <div class="col-md-3 col-xs-3 col-sm-3">
+                                        <input type="text" name="URL" placeholder="输入图标"
+                                               class="form-control " />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="saveOrg" class="btn btn-info">保存</button>
+                <button data-dismiss="modal" class="btn btn-default">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    删除单位
+                </h4>
+            </div>
+            <div class="modal-body">
+                确定删除单位
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="deleteConfirm">
+                    确定
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+</body>
+<script src="../../common/js/jquery-2.1.1.min.js?rev=6631a779321bc03f4a5281d3ff526254"></script>
+<script src="../../common/js/jquery-migrate-1.4.1.min.js"></script>
+<script src="../../common/plugs/bootstrap-3.3.5/js/bootstrap.min.js?rev=4becdc9104623e891fbb9d38bba01be4"></script>
+<script src="../../common/plugs/layer/layer.js?rev=8962f047eeb03c06cf8200de1bf8ab99"></script>
+<script src="../../common/js/mock.js"></script>
+<script src="../../common/plugs/jquery-validation/dist/jquery.validate.min.js?rev=3b00d60f87e893caf2649eff0d48813a"></script>
+<script src="../../common/plugs/jquery-validation/dist/localization/messages_zh.min.js?rev=6979ac84406e8c982e578736d368b3f8"></script>
+<script src="../../common/js/iframeCommon.js?rev=1447835709082"></script>
+<script src="../../common/js/jquery.values.js"></script>
+
+
+<script src="../../common/js/LocalResizeIMG.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../common/plugs/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../common/js/URL.js"></script>
+<script src="../../common/js/iframeCommon.js"></script>
+<script src="../../js/sysmanage/unitManage.js"></script>

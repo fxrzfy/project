@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../common/css/style.min.css"/>
+    <link rel="stylesheet" href="../../common/plugs/layer/skin/layer.css?rev=433a1dd8df8c4851be764e907f6d758a"/>
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../common/plugs/ztree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet"
+          href="../../common/plugs/bootstrap-table/dist/extensions/editable/css/bootstrap-editable.css">
+    <title>漏欠收款管理</title>
+
+</head>
+</html>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-24">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="tab-pane">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="panel panel-default">
+                                    <div class="form-group">
+                                        <div class="col-md-24">
+                                            <button type="button" class="btn btn-primary" id="add" modal="enter"
+                                                    style="margin-top: 5px;"><span>&nbsp;新增&nbsp;</span>
+                                            </button>
+
+                                            <button type="button" class="btn btn-primary" id="modify" modal="enter"
+                                                    style="margin-top: 5px;"><span>&nbsp;修改&nbsp;</span>
+                                            </button>
+
+                                            <button type="button" class="btn btn-primary" id="del" modal="enter"
+                                                    style="margin-top: 5px;"><span>&nbsp;刪除&nbsp;</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div style="height:600px;overflow:auto;" class="panel-body">
+                                        <ul id="treeSub" class="ztree"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-18">
+                                <div class="panel panel-default partyList">
+                                    <div class="panel-body">
+                                        基本信息
+                                        <div class="ibox-content">
+                                            <div id="todo" class="tab-pane active">
+                                                <div style="text-align:right;">
+                                                    <input type="button" id="delAll" class="btn btn-primary "
+                                                           value="删除"/>
+                                                    <input type="button" id="addDetailNew" class="btn btn-primary "
+                                                           value="新增"/>
+                                                    <input type="button" id="editDetailNew" class="btn btn-primary "
+                                                           value="编辑"/>
+                                                    <form id="searchForm" class="form-horizontal">
+                                                        <input type="hidden" name="lqsknrflId" id="slqsknrflId">
+                                                    </form>
+                                                </div>
+                                                <table id="table1" data-toggle="table" data-idField="id"
+                                                       data-ajax="table_1" data-editable-emptytext="空" class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th data-field="state" data-checkbox="true">选择</th>
+                                                        <th data-width="50" data-field="index"
+                                                            data-formatter="getindex">序号
+                                                        </th>
+                                                        <th data-field="name">问题点</th>
+                                                        <!--<th data-field="operation" data-switchable="false" data-formatter="handle_1"
+                                                            data-events="tableEvent_1">操作
+                                                        </th>-->
+                                                    </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="addOrg" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+    <div class="modal-dialog" style="width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">新增</h4>
+            </div>
+            <div class="modal-body">
+                <form id="addOrgForm" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-48 text-right">
+                            <div class="form-group form-group-sm">
+                                <div class="input-tip">
+                                    <label class="col-md-4 col-xs-4 col-sm-4 control-label">名称：</label>
+                                    <div class="col-md-10 col-xs-10 col-sm-10">
+                                        <input type="hidden" name="id"/>
+                                        <input type="text" name="name" placeholder="请输入名称" autocomplete="off"
+                                               class="form-control required" maxlength="100"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="saveOrg" class="btn btn-info">保存</button>
+                <button data-dismiss="modal" class="btn btn-default">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="addDetail" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+    <div class="modal-dialog" style="width:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">新增</h4>
+            </div>
+            <div class="modal-body">
+                <form id="addDetailForm" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-48 text-right">
+                            <div class="form-group form-group-sm">
+                                <div class="input-tip">
+                                    <input type="hidden" name="lqsknrflId" id="lqsknrflId">
+                                    <label class="col-md-4 col-xs-4 col-sm-4 control-label">名称：</label>
+                                    <div class="col-md-18 col-xs-18 col-sm-18">
+                                        <input type="hidden" name="id"/>
+                                        <input type="text" name="name" placeholder="请输入名称" autocomplete="off"
+                                               class="form-control required" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <div class="input-tip">
+                                    <label class="col-md-4 col-xs-4 col-sm-4 control-label">编码：</label>
+                                    <div class="col-md-6 col-xs-6 col-sm-6">
+                                        <input type="text" name="code" placeholder="请输入编码" autocomplete="off"
+                                               class="form-control " />
+                                    </div>
+                                </div>
+                            </div><div class="form-group form-group-sm">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="saveDetail" class="btn btn-info">保存</button>
+                <button data-dismiss="modal" class="btn btn-default">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../../common/js/jquery-2.1.1.min.js?rev=6631a779321bc03f4a5281d3ff526254"></script>
+<script src="../../common/plugs/bootstrap-3.3.5/js/bootstrap.min.js?rev=4becdc9104623e891fbb9d38bba01be4"></script>
+<script src="../../common/plugs/layer/layer.js?rev=8962f047eeb03c06cf8200de1bf8ab99"></script>
+<script src="../../common/js/mock.js"></script>
+<script src="../../common/plugs/jquery-validation/dist/jquery.validate.min.js?rev=3b00d60f87e893caf2649eff0d48813a"></script>
+<script src="../../common/plugs/jquery-validation/dist/localization/messages_zh.min.js?rev=6979ac84406e8c982e578736d368b3f8"></script>
+<script src="../../common/js/iframeCommon.js?rev=1447835709082"></script>
+<script src="../../common/js/jquery.form.js"></script>
+<script src="../../common/js/jquery.values.js"></script>
+<script src="../../common/js/LocalResizeIMG.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../common/plugs/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/extensions/editable/js/bootstrap-editable.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/extensions/editable/bootstrap-table-editable.js"></script>
+<script src="../../common/js/URL.js"></script>
+<script src="../../js/dict/lqsknrManage.js"></script>

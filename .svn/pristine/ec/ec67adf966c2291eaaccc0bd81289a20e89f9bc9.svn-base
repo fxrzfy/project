@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Expires" CONTENT="0">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-3.3.5/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../common/css/style.min.css"/>
+    <link rel="stylesheet" href="../../common/plugs/layer/skin/layer.css?rev=433a1dd8df8c4851be764e907f6d758a"/>
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../../common/plugs/ztree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet"         href="../../common/plugs/bootstrap-table/dist/extensions/editable/css/bootstrap-editable.css">
+    <link rel="stylesheet"         href="../../common/plugs/daterangepicker-master/daterangepicker.css">
+    <style>
+        .ts{
+            height: 30px;
+        }
+    </style>
+    <title>工作任务</title>
+</head>
+</html>
+<div class="modal-content">
+    <form class="form-horizontal" id="addForm">
+        <fieldset id="addFieldset">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">填报计划</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="gzrwId" name="gzrwId"/>
+                <input type="hidden" id="copytarget" name="copytarget"/>
+                <input type="hidden" id="gzjlid" name="id"/>
+                <input type="hidden" id="xzid" name="xzid"/>
+                <input type="hidden" id="workNumber" name="workNumber"/>
+                <div class="form-group form-group-sm">
+                    <div class="input-tip">
+                        <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2"><span
+                                class="text-danger"></span>稽查任务</label>
+
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <input type="text" name="rwmc" class="form-control required disabled"
+                                   placeholder="提交后自动生成" disabled>
+                        </div>
+                    </div>
+                    <div class="input-tip">
+                        <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2"><span
+                                class="text-danger"></span>计划编号</label>
+
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <input type="text" id="jhbh" name="jhbh" class="form-control  disabled"
+                                   placeholder="提交后自动生成" disabled>
+                        </div>
+                    </div>
+                    <div class="input-tip">
+                        <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2">计划名称</label>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <input name="jhmc" class="form-control" placeholder="计划名称"></input>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group form-group-sm">
+                    <div class="input-tip">
+                        <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2"><span
+                                class="text-danger"></span>组别</label>
+
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <input type="text" name="zm" class="form-control required disabled"
+                                   placeholder="组名" disabled>
+                        </div>
+                    </div>
+                    <div class="input-tip">
+                        <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2"><span
+                                class="text-danger"></span>审核状态</label>
+
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <input type="text" id="sshzt" class="form-control disabled"
+                                   placeholder="审核状态" disabled />
+                        </div>
+                    </div>
+                    <div class="input-tip">
+                        <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2"></label>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        </div>
+                    </div>
+                </div>
+                <div id="todo22" class="tab-pane active">
+
+                    <div style="text-align:right;margin-bottom: 10px">
+                        <input type="button" id="apply" class="btn btn-primary " value="提交审核"/>
+                        <input type="button" id="copy" class="btn btn-primary " value="复制"/>
+                        <input type="button" id="export" class="btn btn-primary " value="导出"/>
+                        <input type="button" id="addPlan" class="btn btn-primary " value="新增"/>
+                    </div>
+                    <table id="tablemain" data-ajax="tablemain"  data-unique-id="id" class="table">
+                        <thead>
+                        <tr>
+                            <th data-field="state" data-checkbox="true">选择</th>
+                            <th data-field="index" data-formatter="getIndex">序号</th>
+                            <th data-field="rq" >日期</th>
+                            <th data-field="cz" >车站</th>
+                            <th data-field="sj" >时间</th>
+                            <th data-field="jczd" >检查重点</th>
+                            <th data-field="cc" >车次</th>
+                            <th data-field="ddd" >担当段</th>
+                            <th data-field="qd" >区段</th>
+                            <th data-field="jcsj" >检查时间</th>
+                            <th data-field="bz" >备注</th>
+                            <th data-field="ss"  data-formatter="handle_2" data-events="tableEvent_222" >操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary saveGzjl">保存</button>
+                <button type="button" data-id="close" class="btn btn-primary saveGzjl">保存并关闭</button>
+                </button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="modal fade" id="grantModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增计划</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="addPlanForm" data-noclear="true" >
+                    <input type="hidden" name="id" id="jhmxid">
+                    <fieldset id="addFieldset1">
+                        <div class="modal-body">
+                            <div class="form-group form-group-sm">
+                                <div class="input-tip">
+                                    <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2"><span
+                                            class="text-danger"></span>时间</label>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <input name="jhkssj" id="jhkssj" class="form-control required date " data-date-format="yyyy-mm-dd" autocomplete="off"
+                                               placeholder="开始时间"></input>
+                                               <i class="dateicon"></i>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <input name="jhjssj" id="jhjssj" class="form-control required date" data-date-format="yyyy-mm-dd" autocomplete="off"
+                                               placeholder="结束时间"></input>
+                                               <i class="dateicon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm">
+                                <div class="input-tip">
+                                    <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2"><span
+                                            class="text-danger"></span>计划类别</label>
+                                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="jhlx" class="btntype required" value="0"/>工作计划
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="jhlx" class="btntype required" value="1"/>休息
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="jhlx" class="btntype required" value="2"/>其他
+                                        </label>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm oterhdiv">
+                                <div class="input-tip">
+                                    <label class="control-label col-xs-2 col-sm-2 col-md-2 col-lg-2"><span
+                                            class="text-danger"></span>备注</label>
+                                    <div class="col-xs-18 col-sm-18 col-md-18 col-lg-18">
+                                        <textarea rows="15" cols="900" class="form-control required " name="bz"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="todo1" class="tab-pane  work">
+                                <h3>检查车站</h3>
+                                <div style="text-align:right;margin-bottom: 10px">
+                                    <!--<input type="button" id="delcz" class="btn btn-primary " value="删除"/>-->
+                                    <input type="button" id="addcz" class="btn btn-primary " value="新增"/>
+                                </div>
+                                <table id="tablecz" data-ajax="tablejccz"  data-unique-id="id"
+                                       class="table">
+                                    <thead>
+                                    <tr>
+                                        <th data-field="state" data-checkbox="true">选择</th>
+                                        <th data-field="id" class="hide">id</th>
+                                        <th data-field="jccz" data-formatter="editCz">车站</th>
+                                        <th data-field="daterange" data-formatter="editSj">时间</th>
+                                        <th data-field="jczd" data-formatter="editZd">检查重点</th>
+                                        <th data-formatter="handle_1" data-events="tableEvent_1" data-field="vid">操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+
+                            </div>
+                            <div id="todo2" class="tab-pane  work">
+                                <h3>检查列车</h3>
+                                <div style="text-align:right;margin-bottom: 10px">
+                                    <!--<input type="button" id="dellc" class="btn btn-primary " value="删除"/>-->
+                                    <input type="button" id="addlc" class="btn btn-primary " value="新增"/>
+                                </div>
+                                <table id="tablelc" data-ajax="tablejclc" data-unique-id="id"
+                                       class="table">
+                                    <thead>
+                                    <tr>
+                                        <th data-field="state" data-checkbox="true">选择</th>
+                                        <th data-field="id" >id</th>
+                                        <th data-field="jccc">车次</th>
+                                        <th data-field="ddd">当担段</th>
+                                        <th data-field="qd" >区段</th>
+                                        <th data-field="jcsj">检查时间</th>
+                                        <th data-field="bz">备注</th>
+                                        <th data-formatter="handle_lc" data-events="tableEvent_lc" data-field="vid">操作</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="savePlan">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editselect">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">输入</h4>
+            </div>
+            <div class="modal-body">
+                <form id="addTemForm" data-noclear="true" class="form-horizontal">
+                    <input type="hidden" id="pindex">
+                    <input type="hidden" id="ptype">
+                    <input type="hidden" id="tempadd"  val="">
+                    <div class="form-group form-group-sm">
+                        <div class="input-tip">
+                            <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">选择</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control cz"  id="tempaddstr" autocomplete="off" data-provide="typeahead" name="text" placeholder="请输入"/>
+                                <input class="form-control zd"  id="zastr" autocomplete="off"  name="text" placeholder="请输入"/>
+                                <div class="ts"> <select class=" ts shour" id="sh1"></select>:
+                                    <select class="ts sminute" id="sm1"></select>至
+                                    <select class="ts shour" id="sh2"></select>:
+                                    <select class="ts sminute" id="sm2"></select></div>
+
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <button type="button" class="btn btn-sm btn-primary" id="sureDate">确定</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="addlcModel">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">输入</h4>
+            </div>
+            <div class="modal-body">
+                <form id="addlcForm"  class="form-horizontal">
+                    <input type="hidden" id="lcindex">
+                    <input type="hidden" id="lcddd">
+                    <div class="form-group form-group-sm">
+                        <div class="input-tip">
+                            <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">检查车次</label>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                <input class="form-control required"  autocomplete="off"  name="jccc" placeholder="请输入"/>
+                            </div>
+                            <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">担当段</label>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                <input class="form-control required"  autocomplete="off"  id="ddd"  name="ddd" placeholder="请输入"/>
+                            </div>
+                            <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">区段</label>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                <input class="form-control required"  autocomplete="off"  name="qd" placeholder="请输入"/>
+                            </div>
+                        </div>
+                        <div class="input-tip">
+                            <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">备注</label>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                <select name="bz" id="lcbz" class="form-control required">
+                                    <option value="上海局">上海局</option>
+                                    <option value="外局">外局</option>
+                                </select>
+                            </div>
+                            <label class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">时间</label>
+                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                <div class="ts"> <select class=" ts shour" id="sh11"></select>:
+                                    <select class="ts sminute" id="sm11"></select>至
+                                    <select class="ts shour" id="sh22"></select>:
+                                    <select class="ts sminute" id="sm22"></select></div>
+                            </div>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                            </div>
+                        </div>
+                        <div class="input-tip">
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="addlcBtn">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+<script src="../../common/js/jquery-2.1.1.min.js?rev=6631a779321bc03f4a5281d3ff526254"></script>
+<script src="../../common/plugs/bootstrap-3.3.5/js/bootstrap.min.js?rev=4becdc9104623e891fbb9d38bba01be4"></script>
+<script src="../../common/plugs/layer/layer.js?rev=8962f047eeb03c06cf8200de1bf8ab99"></script>
+<script src="../../common/js/mock.js"></script>
+<script src="../../common/plugs/jquery-validation/dist/jquery.validate.min.js?rev=3b00d60f87e893caf2649eff0d48813a"></script>
+<script src="../../common/plugs/jquery-validation/dist/localization/messages_zh.min.js?rev=6979ac84406e8c982e578736d368b3f8"></script>
+<script src="../../common/js/jquery.form.js"></script>
+<script src="../../common/js/jquery.values.js"></script>
+
+<script src="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../../common/plugs/bootstrap-datepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="../../common/plugs/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+<script src="../../common/plugs/ztree/js/jquery.ztree.excheck-3.5.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/extensions/editable/js/bootstrap-editable.js"></script>
+<script src="../../common/plugs/bootstrap-table/dist/extensions/editable/bootstrap-table-editable.js"></script>
+<script src="../../common/plugs/bootstrap-3.3.5/js/bootstrap3-typeahead.js"></script>
+<script src="../../common/js/jquery.form.js"></script>
+<script src="../../common/plugs/daterangepicker-master/moment.min.js"></script>
+<script src="../../common/plugs/daterangepicker-master/daterangepicker.js"></script>
+
+<script src="../../common/js/URL.js"></script>
+<script src="../../common/js/iframeCommon.js"></script>
+<script src="../../js/bizywgl/gzjlEdit.js"></script>
