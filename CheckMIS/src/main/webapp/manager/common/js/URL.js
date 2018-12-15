@@ -1,8 +1,8 @@
 var system = ['report/'],
     interUrl = {
         mockList: "",
-        //basic: "/api/", //nginx代理使用
-        basic: "/",
+        basic: "/api/", //nginx代理使用
+        // basic: "/",
         common: {
             login: "login"
         },

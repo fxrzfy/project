@@ -327,7 +327,7 @@ body.body-small .navbar-top-links li:last-child {
 }
 .nav-second-level li a {
 	position: relative;
-	padding: 5px 0 5px 15px;
+	padding: 5px 0 5px 25px;
 }
 
 .nav-second-level li:last-child {
@@ -3377,8 +3377,14 @@ video {
 
 .wrapper-content {
 	padding: 10px 15px;
+	height: 100vh;
 }
-
+.wrapper-content .row,
+.wrapper-content .row .col-sm-24,
+.wrapper-content .row .col-sm-24 .ibox,
+.wrapper-content .row .col-sm-24 .ibox .ibox-content{
+	height: 100%;
+}
 #page-wrapper {
 	padding: 0 5px;
 	position: inherit;
@@ -7552,6 +7558,7 @@ body.skin-3 {
 .smallplay{
 	position: absolute;
 	top: 9px;
+	left: 5px;
 }
 .btna{
 	margin-right: 10px;

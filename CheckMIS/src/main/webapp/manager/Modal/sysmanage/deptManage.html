@@ -1,142 +1,140 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../../common/plugs/bootstrap-3.3.5/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../../common/css/style.min.css"/>
-    <link rel="stylesheet" href="../../common/plugs/layer/skin/layer.css?rev=433a1dd8df8c4851be764e907f6d758a"/>
+    <link rel="stylesheet" href="../../common/plugs/bootstrap-3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../common/css/style.min.css" />
+    <link rel="stylesheet" href="../../common/plugs/layer/skin/layer.css?rev=433a1dd8df8c4851be764e907f6d758a" />
     <link rel="stylesheet" href="../../common/plugs/bootstrap-table/dist/bootstrap-table.min.css">
     <link rel="stylesheet" href="../../common/plugs/ztree/css/zTreeStyle/zTreeStyle.css">
     <link rel="stylesheet" href="../../css/ztreeicon.css">
     <title>部门管理</title>
 
 </head>
+
 <body class="gray-bg">
-<div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-sm-24">
-            <div class="ibox float-e-margins">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-24">
+                <div class="ibox float-e-margins">
 
-                <div class="ibox-content">
-                    <div class="tab-pane">
-                        <div style="text-align:right;">
-                            <button type="button" class="btn btn-primary" id="add" ><span
-                                    class="glyphicon btn-primary"></span><span>&nbsp;新增&nbsp;</span>
-                            </button>
-                            <button type="button" class="btn btn-primary" id="modify"><span
-                                    class="glyphicon btn-primary"></span><span>&nbsp;修改&nbsp;</span>
-                            </button>
-                            <button type="button" class="btn btn-primary" id="delete"><span
-                                    class="glyphicon btn-primary"></span><span>&nbsp;删除&nbsp;</span>
-                            </button>
-                            <button type="button" class="btn btn-primary" id="save"
-                                    style="display:none"><span
-                                    class="glyphicon btn-primary"></span><span>&nbsp;保存&nbsp;</span>
-                            </button>
-                            <button type="button" class="btn btn-primary" id="cancel"
-                                    style="display:none"><span
-                                    class="glyphicon btn-primary"></span><span>&nbsp;取消&nbsp;</span>
-                            </button>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-8 col-xs-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">部门管理</h3>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-24">
+                    <div class="ibox-content">
+                        <div class="tab-pane">
+                            <div style="text-align:right;">
+                                <button type="button" class="btn btn-primary" id="add"><span>&nbsp;新增&nbsp;</span>
+                                </button>
+                                <button type="button" class="btn btn-primary" id="modify"><span>&nbsp;修改&nbsp;</span>
+                                </button>
+                                <button type="button" class="btn btn-primary" id="delete"><span>&nbsp;删除&nbsp;</span>
+                                </button>
+                                <button type="button" class="btn btn-primary" id="save" style="display:none"><span>&nbsp;保存&nbsp;</span>
+                                </button>
+                                <button type="button" class="btn btn-primary" id="cancel" style="display:none"><span>&nbsp;取消&nbsp;</span>
+                                </button>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-8 col-xs-12">
+                                    <div class="panel panel-default" style="height:85vh">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">部门管理</h3>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-24">
 
-                                            <!-- <button type="button" class="btn btn-primary" id="stop" modal="enter"><span class="glyphicon btn-primary"></span><span>&nbsp;停用&nbsp;</span></button>
+                                                <!-- <button type="button" class="btn btn-primary" id="stop" modal="enter"><span class="glyphicon btn-primary"></span><span>&nbsp;停用&nbsp;</span></button>
                                             <button type="button" class="btn btn-primary" id="del" modal="enter"><span class="glyphicon btn-primary"></span><span>&nbsp;删除&nbsp;</span></button> -->
+                                            </div>
+                                        </div>
+                                        <div style="height:94%;overflow:auto;" class="panel-body">
+                                            <ul id="tree" class="ztree"></ul>
                                         </div>
                                     </div>
-                                    <div style="height:600px;overflow:auto;" class="panel-body">
-                                        <ul id="tree" class="ztree"></ul>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-18 col-sm-16 col-xs-12">
-                                <div class="panel panel-default partyList">
-                                    <div class="panel-body">
-                                        部门信息
-                                        <div class="ibox-content">
-                                            <form id="deptForm" class="form-horizontal">
-                                                <div class="form-group">
-                                                    <div class="col-md-24 text-right">
-                                                        <div class="form-group form-group-sm">
-                                                            <div class="input-tip">
-                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">部门编号：</label>
-                                                                <div class="col-md-9 col-xs-6 col-sm-8">
-                                                                    <input type="text" id="code" name="code" placeholder="请输入部门编号"
-                                                                           class="form-control required" maxlength="20"  />
+                                <div class="col-md-18 col-sm-16 col-xs-12">
+                                    <div class="panel panel-default partyList" style="height:85vh">
+                                        <div class="panel-body">
+                                            部门信息
+                                            <div class="ibox-content">
+                                                <form id="deptForm" class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <div class="col-md-24 text-right">
+                                                            <div class="form-group form-group-sm">
+                                                                <div class="input-tip">
+                                                                    <label class="col-md-3 col-xs-6 col-sm-4 control-label">部门编号：</label>
+                                                                    <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                        <input type="text" id="code" name="code"
+                                                                            placeholder="请输入部门编号" class="form-control required"
+                                                                            maxlength="20" />
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group form-group-sm">
-                                                            <div class="input-tip">
-                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">部门名称：</label>
-                                                                <div class="col-md-9 col-xs-6 col-sm-8">
-                                                                    <input type="text" id="name" name="name" placeholder="请输入部门名称"
-                                                                           class="form-control required"
-                                                                           maxlength="100">
+                                                            <div class="form-group form-group-sm">
+                                                                <div class="input-tip">
+                                                                    <label class="col-md-3 col-xs-6 col-sm-4 control-label">部门名称：</label>
+                                                                    <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                        <input type="text" id="name" name="name"
+                                                                            placeholder="请输入部门名称" class="form-control required"
+                                                                            maxlength="100">
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group form-group-sm">
-                                                            <div class="input-tip">
-                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">部门类型：</label>
-                                                                <div class="col-md-9 col-xs-6 col-sm-8">
-                                                                    <select name="type" id="type" class="form-control required rcDropdownInit" data-type="st_dept_type">
-                                                                    </select>
+                                                            <div class="form-group form-group-sm">
+                                                                <div class="input-tip">
+                                                                    <label class="col-md-3 col-xs-6 col-sm-4 control-label">部门类型：</label>
+                                                                    <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                        <select name="type" id="type" class="form-control required rcDropdownInit"
+                                                                            data-type="st_dept_type">
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group form-group-sm">
-                                                            <div class="input-tip">
-                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">部门电话：</label>
-                                                                <div class="col-md-9 col-xs-6 col-sm-8">
-                                                                    <input type="text" id="phone" name="phone" placeholder="请输入部门电话"
-                                                                           class="form-control required"
-                                                                           maxlength="100">
+                                                            <div class="form-group form-group-sm">
+                                                                <div class="input-tip">
+                                                                    <label class="col-md-3 col-xs-6 col-sm-4 control-label">部门电话：</label>
+                                                                    <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                        <input type="text" id="phone" name="phone"
+                                                                            placeholder="请输入部门电话" class="form-control required"
+                                                                            maxlength="100">
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group form-group-sm">
-                                                            <div class="input-tip">
-                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">部门传真：</label>
-                                                                <div class="col-md-9 col-xs-6 col-sm-8">
-                                                                    <input type="text" id="fax" name="fax" placeholder="请输入部门传真"
-                                                                           class="form-control required"
-                                                                           maxlength="100">
+                                                            <div class="form-group form-group-sm">
+                                                                <div class="input-tip">
+                                                                    <label class="col-md-3 col-xs-6 col-sm-4 control-label">部门传真：</label>
+                                                                    <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                        <input type="text" id="fax" name="fax"
+                                                                            placeholder="请输入部门传真" class="form-control required"
+                                                                            maxlength="100">
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group form-group-sm">
-                                                            <div class="input-tip">
-                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">负责人：<span></span></label>
-                                                                <div class="col-md-9 col-xs-6 col-sm-8">
-                                                                    <input type="text" id="owner" name="owner" placeholder="请输入负责人"
-                                                                           class="form-control required"
-                                                                           maxlength="100">
+                                                            <div class="form-group form-group-sm">
+                                                                <div class="input-tip">
+                                                                    <label class="col-md-3 col-xs-6 col-sm-4 control-label">负责人：<span></span></label>
+                                                                    <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                        <input type="text" id="owner" name="owner"
+                                                                            placeholder="请输入负责人" class="form-control required"
+                                                                            maxlength="100">
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group form-group-sm">
-                                                            <div class="input-tip">
-                                                                <label class="col-md-3 col-xs-6 col-sm-4 control-label">联系电话：</label>
-                                                                <div class="col-md-9 col-xs-6 col-sm-8">
-                                                                    <input type="text" id="ownerPhone" name="ownerPhone" placeholder="请输入联系电话"
-                                                                           class="form-control required"
-                                                                           maxlength="100">
+                                                            <div class="form-group form-group-sm">
+                                                                <div class="input-tip">
+                                                                    <label class="col-md-3 col-xs-6 col-sm-4 control-label">联系电话：</label>
+                                                                    <div class="col-md-9 col-xs-6 col-sm-8">
+                                                                        <input type="text" id="ownerPhone" name="ownerPhone"
+                                                                            placeholder="请输入联系电话" class="form-control required"
+                                                                            maxlength="100">
+                                                                    </div>
                                                                 </div>
                                                             </div>
+                                                            <input type="hidden" id="id" name="id" />
+                                                            <input type="hidden" id="parentId" name="parentId" />
+                                                            <input type="hidden" id="unitId" name="unitId" />
                                                         </div>
-                                                        <input type="hidden" id="id" name="id"   />
-                                                        <input type="hidden" id="parentId" name="parentId"/>
-                                                        <input type="hidden" id="unitId" name="unitId"/>
                                                     </div>
-                                                </div>
-                                            </form>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -147,32 +145,31 @@
             </div>
         </div>
     </div>
-</div>
-<div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    删除单位
-                </h4>
-            </div>
-            <div class="modal-body">
-                确定删除单位
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="deleteConfirm">
-                    确定
-                </button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消
-                </button>
+    <div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        删除单位
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    确定删除单位
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="deleteConfirm">
+                        确定
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                    </button>
 
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 </body>
 <script src="../../common/js/jquery-2.1.1.min.js?rev=6631a779321bc03f4a5281d3ff526254"></script>
 <script src="../../common/js/jquery-migrate-1.4.1.min.js"></script>
