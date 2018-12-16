@@ -3379,12 +3379,12 @@ video {
 	padding: 10px 15px;
 	height: 100vh;
 }
-.wrapper-content .row,
+/* .wrapper-content .row,
 .wrapper-content .row .col-sm-24,
 .wrapper-content .row .col-sm-24 .ibox,
 .wrapper-content .row .col-sm-24 .ibox .ibox-content{
 	height: 100%;
-}
+} */
 #page-wrapper {
 	padding: 0 5px;
 	position: inherit;
